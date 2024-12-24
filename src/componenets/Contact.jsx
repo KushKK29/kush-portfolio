@@ -4,6 +4,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
+import { Link } from "react-scroll"; // Import react-scroll's Link component
 
 const Contact = () => {
   useEffect(() => {
@@ -51,11 +52,56 @@ const Contact = () => {
           >
             <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
             <ul className="space-y-3 text-lg">
-              <li className="hover:text-teal-400 cursor-pointer">Intro</li>
-              <li className="hover:text-teal-400 cursor-pointer">Skills</li>
-              <li className="hover:text-teal-400 cursor-pointer">Projects</li>
-              <li className="hover:text-teal-400 cursor-pointer">Education</li>
-              <li className="hover:text-teal-400 cursor-pointer">Experience</li>
+              <li>
+                <Link
+                  to="intro"
+                  smooth={true}
+                  duration={300}
+                  className="hover:text-teal-400 cursor-pointer"
+                >
+                  Intro
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="skills"
+                  smooth={true}
+                  duration={300}
+                  className="hover:text-teal-400 cursor-pointer"
+                >
+                  Skills
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="projects"
+                  smooth={true}
+                  duration={300}
+                  className="hover:text-teal-400 cursor-pointer"
+                >
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="education"
+                  smooth={true}
+                  duration={1000}
+                  className="hover:text-teal-400 cursor-pointer"
+                >
+                  Education
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="experience"
+                  smooth={true}
+                  duration={300}
+                  className="hover:text-teal-400 cursor-pointer"
+                >
+                  Experience
+                </Link>
+              </li>
             </ul>
           </div>
 

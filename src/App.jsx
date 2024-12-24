@@ -2,7 +2,7 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Projects from "./componenets/Projects";
-import Header from "./componenets/Header";
+
 import Intro from "./componenets/Intro";
 import Skills from "./componenets/Skills";
 import Experience from "./componenets/Experience";
@@ -12,8 +12,7 @@ import Contact from "./componenets/Contact";
 const App = () => {
   return (
     <div className="bg-slate-800 min-h-screen text-white flex flex-col">
-      <Header />
-      <div id="intro" className="mt-16">
+      <div id="intro" className="mt-0">
         <Intro />
       </div>
       <div id="skills">
