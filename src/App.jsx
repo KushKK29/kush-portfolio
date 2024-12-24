@@ -8,18 +8,29 @@ import Skills from "./componenets/Skills";
 import Experience from "./componenets/Experience";
 import Education from "./componenets/Education";
 import Contact from "./componenets/Contact";
+
 const App = () => {
   return (
     <div className="bg-slate-800 min-h-screen text-white flex flex-col">
       <Header />
-      <div className="mt-16">
+      <div id="intro" className="mt-16">
         <Intro />
       </div>
-      <Skills></Skills>
-      <Projects></Projects>
-      <Education></Education>
-      <Experience></Experience>
-      <Contact></Contact>
+      <div id="skills">
+        <Skills />
+      </div>
+      <div id="projects">
+        <Projects />
+      </div>
+      <div id="education">
+        <Education />
+      </div>
+      <div id="experience">
+        <Experience />
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
     </div>
   );
 };

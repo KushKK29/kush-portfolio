@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import video1 from "./video1.mp4";
+import ecommerce from "./Ecommerce.mp4";
+import RBAC from "./Rbac.mp4";
+import AI from "./AiGen.mp4";
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
 
@@ -8,24 +11,25 @@ const services = [
     name: "RBAC System",
     description:
       "This project is based on creating and distributing roles by the admin.",
-    videoUrl: video1, // Directly use video1 as the URL
-    githubRepo: "https://github.com/your-repo/rbac-system",
+    videoUrl: RBAC, // Directly use video1 as the URL
+    githubRepo: "https://github.com/KushKK29/rbac-context",
     liveDemo: "https://your-live-demo.com/rbac-system",
   },
   {
     name: "AI Image Generator",
     description:
       "In this project, the image is generated using a machine learning model based on the prompt entered.",
-    videoUrl: video1, // Add the video URL here
-    githubRepo: "https://github.com/your-repo/ai-image-generator",
+    videoUrl: AI, // Add the video URL here
+    githubRepo:
+      "https://github.com/KushKK29/react-peoject-2/tree/main/vite-project",
     liveDemo: "https://your-live-demo.com/ai-image-generator",
   },
   {
     name: "E-commerce Website",
     description: "This is my first project related to React.js.",
-    videoUrl: video1, // Add the video URL here
-    githubRepo: "https://github.com/your-repo/e-commerce-website",
-    liveDemo: "https://your-live-demo.com/e-commerce-website",
+    videoUrl: ecommerce, // Add the video URL here
+    githubRepo: "https://github.com/KushKK29/E-Commerce_Website",
+    liveDemo: "https://kushkk29.github.io/E-Commerce_Website/",
   },
 ];
 
@@ -38,9 +42,12 @@ const Projects = () => {
     <section className="py-16 mx-auto sm:py-20">
       <div className="mx-auto flex justify-center object-center px-4 py-16 sm:py-24 lg:max-w-7xl">
         <div className="flex justify-center object-center flex-col gap-12 sm:gap-16">
-          <h2 className="text-3xl tracking-tight text-white sm:text-3xl lg:text-3xl font-bold flex justify-center">
-            Projects
-          </h2>
+          <div className="flex justify-center font-bold text-3xl relative my-5">
+            <span className="relative group hover:scale-110">
+              Projects
+              <span className="absolute bottom-0 left-0 w-0 h-[3px] rounded-md bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </span>
+          </div>
 
           <div className="mx-auto grid gap-12 space-y-10 md:space-y-0 sm:gap-16 lg:grid-cols-3">
             {services.map((service, index) => (
@@ -54,7 +61,7 @@ const Projects = () => {
                   {/* Front Face */}
                   <div className="absolute inset-0 h-full w-full rounded-xl [backface-visibility:hidden]">
                     <video
-                      className="object-cover cursor-pointer object-center h-full w-full rounded-xl"
+                      className="object-fill cursor-pointer object-center h-full w-full rounded-xl"
                       src={service.videoUrl}
                       autoPlay
                       loop
