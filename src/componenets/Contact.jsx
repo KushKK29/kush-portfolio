@@ -1,15 +1,82 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosCall } from "react-icons/io";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
 import { Link } from "react-scroll"; // Import react-scroll's Link component
+import emailjs from "emailjs-com"; // Ensure EmailJS is imported
+import ContactMe from "./ContactMe"; // Ensure ContactMe is implemented or imported
 
 const Contact = () => {
   useEffect(() => {
     AOS.init(); // Initialize AOS animations
   }, []);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+    agreed: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    // Validate if user agreed to the privacy policy
+    if (!formData.agreed) {
+      alert("Please agree to the privacy policy.");
+      return;
+    }
+
+    // Create template parameters to send via EmailJS
+    const templateParams = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        "service_x98onwn", // Replace with your EmailJS Service ID
+        "template_7wbz7zl", // Replace with your EmailJS Template ID
+        templateParams,
+        "rVCAY7OUljkJotEN1" // Replace with your EmailJS Public Key
+      )
+      .then(
+        (response) => {
+          console.log(
+            "Email sent successfully!",
+            response.status,
+            response.text
+          );
+          alert("Thank you! Your message has been sent.");
+        },
+        (error) => {
+          console.error("Failed to send email.", error);
+          alert("Oops! Something went wrong. Please try again.");
+        }
+      );
+
+    // Reset the form
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+      agreed: false,
+    });
+  };
 
   return (
     <div className="bg-slate-800 text-white w-full py-10">
@@ -17,7 +84,7 @@ const Contact = () => {
         {/* Header Section */}
         <div
           className="text-center mb-10"
-          data-aos="fade-up" // Added AOS animation
+          data-aos="fade-up"
           data-aos-duration="1000"
         >
           <h1 className="text-3xl font-bold">Get In Touch</h1>
@@ -26,6 +93,13 @@ const Contact = () => {
             following channels!
           </p>
         </div>
+
+        {/* Contact Form */}
+        <ContactMe
+          onSubmit={handleSubmit}
+          formData={formData}
+          onChange={handleChange}
+        />
 
         {/* Flex Layout for Columns */}
         <div className="flex flex-wrap justify-between space-x-6 space-y-6 md:space-y-0">
@@ -124,7 +198,7 @@ const Contact = () => {
               </p>
               <p className="flex items-center space-x-2">
                 <CiLocationOn className="text-teal-400 transform transition duration-300 hover:scale-110" />
-                <span>Chandausi,177209</span>
+                <span>Chandausi, 177209</span>
               </p>
             </div>
           </div>

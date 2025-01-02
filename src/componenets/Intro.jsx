@@ -9,6 +9,7 @@ import { Link } from "react-scroll"; // Import Link from react-scroll
 import { RiMenu2Fill } from "react-icons/ri"; // Import Menu Icon
 import Leetcode from "./leetcode.png";
 import Codechef from "./codechef.png";
+import ScrollProgress from "./ScrollProgress";
 const Intro = () => {
   const defaultOptionsGitHub = {
     loop: true,
@@ -212,7 +213,7 @@ const Intro = () => {
           </div>
         </div>
       </div>
-
+      <ScrollProgress />
       {/* Intro Section */}
       <div className="top-[0vh] flex flex-col-reverse md:flex-row items-center justify-between bg-gradient-to-b from-gray-900 via-gray-800 to-black min-h-screen text-white p-8">
         <div
@@ -265,17 +266,17 @@ const Intro = () => {
               href="https://leetcode.com/u/Kush30/"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-3 w-8 h-8 hover:scale-110"
+              className="mt-3 w-8 h-8 hover:scale-110"
             >
-              <img src={Leetcode} class="h-8 w-8" alt="Leetcode" />
+              <img src={Leetcode} className="h-8 w-8" alt="Leetcode" />
             </a>
             <a
               href="https://www.codechef.com/users/kush279"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-3 w-14 h-14 hover:scale-110"
+              className="mt-3 w-14 h-14 hover:scale-110"
             >
-              <img src={Codechef} class="h-10 w-10" alt="Codechef" />
+              <img src={Codechef} className="h-10 w-10" alt="Codechef" />
             </a>
           </div>
         </div>

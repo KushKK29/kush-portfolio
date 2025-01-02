@@ -14,6 +14,7 @@ const App = () => {
     <div className="bg-slate-800 min-h-screen text-white flex flex-col">
       <div id="intro" className="mt-0">
         <Intro />
+        
       </div>
       <div id="skills">
         <Skills />
