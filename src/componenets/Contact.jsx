@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
 import { Link } from "react-scroll"; // Import react-scroll's Link component
 import emailjs from "emailjs-com"; // Ensure EmailJS is imported
-import ContactMe from "./ContactMe"; // Ensure ContactMe is implemented or imported
+
 
 const Contact = () => {
   useEffect(() => {
