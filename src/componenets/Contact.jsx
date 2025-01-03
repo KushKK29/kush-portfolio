@@ -7,7 +7,6 @@ import "aos/dist/aos.css"; // AOS CSS
 import { Link } from "react-scroll"; // Import react-scroll's Link component
 import emailjs from "emailjs-com"; // Ensure EmailJS is imported
 
-
 const Contact = () => {
   useEffect(() => {
     AOS.init(); // Initialize AOS animations
@@ -95,12 +94,108 @@ const Contact = () => {
         </div>
 
         {/* Contact Form */}
-        <ContactMe
-          onSubmit={handleSubmit}
-          formData={formData}
-          onChange={handleChange}
-        />
-
+        <div
+          className="text-black flex justify-center mb-6 rounded-lg "
+          data-aos="fade-up"
+        >
+          <form
+            onSubmit={handleSubmit}
+            className="mt-6 bg-white p-4 rounded-lg"
+          >
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="first-name"
+                  className="block text-sm font-semibold text-gray-900"
+                >
+                  First Name
+                </label>
+                <input
+                  id="first-name"
+                  name="firstName"
+                  type="text"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="last-name"
+                  className="block text-sm font-semibold text-gray-900"
+                >
+                  Last Name
+                </label>
+                <input
+                  id="last-name"
+                  name="lastName"
+                  type="text"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold text-gray-900"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
+                />
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-semibold text-gray-900"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
+                />
+              </div>
+              <div className="flex gap-x-4 sm:col-span-2 items-center">
+                <input
+                  id="agreed"
+                  name="agreed"
+                  type="checkbox"
+                  checked={formData.agreed}
+                  onChange={handleChange}
+                  className="h-4 w-4 rounded border-2 border-gray-300"
+                />
+                <label htmlFor="agreed" className="text-sm text-gray-600">
+                  By selecting this, you agree to our{" "}
+                  <Link
+                    to="/privacy-policy"
+                    className="font-semibold text-indigo-600"
+                  >
+                    privacy&nbsp;policy
+                  </Link>
+                  .
+                </label>
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-indigo-600 text-white py-2 mt-4 rounded-md hover:bg-indigo-500"
+            >
+              Let's talk
+            </button>
+          </form>
+        </div>
         {/* Flex Layout for Columns */}
         <div className="flex flex-wrap justify-between space-x-6 space-y-6 md:space-y-0">
           {/* Left Column */}
@@ -108,7 +203,6 @@ const Contact = () => {
             className="flex-1 bg-slate-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-delay="200"
           >
             <h2 className="text-2xl font-semibold mb-4">Kush's Portfolio</h2>
             <p className="text-lg">
@@ -122,7 +216,6 @@ const Contact = () => {
             className="flex-1 bg-slate-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-delay="400"
           >
             <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
             <ul className="space-y-3 text-lg">
@@ -184,7 +277,6 @@ const Contact = () => {
             className="flex-1 bg-slate-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
             data-aos="fade-up"
             data-aos-duration="1000"
-            data-aos-delay="600"
           >
             <h2 className="text-2xl font-semibold mb-4">Contact Info</h2>
             <div className="space-y-3 text-lg">

@@ -22,7 +22,7 @@ const services = [
     videoUrl: AI, // Add the video URL here
     githubRepo:
       "https://github.com/KushKK29/react-peoject-2/tree/main/vite-project",
-    liveDemo: "https://your-live-demo.com/ai-image-generator",
+    liveDemo: "https://kushkk29.github.io/AI-Image-Generator/",
   },
   {
     name: "E-commerce Website",
