@@ -8,8 +8,6 @@ import Experience from "./componenets/Experience";
 import Education from "./componenets/Education";
 import Contact from "./componenets/Contact";
 import MagicCursor from "./componenets/MagicCursor";
-
-
 const App = () => {
   return (
     <div className="bg-slate-800 min-h-screen text-white flex flex-col">
@@ -22,6 +20,7 @@ const App = () => {
       <div id="skills">
         <Skills />
       </div>
+      
       <div id="projects">
         <Projects />
       </div>

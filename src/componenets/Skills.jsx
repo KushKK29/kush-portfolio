@@ -43,62 +43,43 @@ const Skills = () => {
     ],
   };
 
-  return (
-    <div>
-      <div className="flex justify-center font-bold text-3xl relative my-5">
-        <span className="relative group">
-          Skills
-          <span className="absolute bottom-0 left-0 w-0 h-[5px] rounded-md bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-        </span>
-      </div>
+  const skillCards = [
+    { icon: FaHtml5, name: "HTML", color: "text-orange-500" },
+    { icon: FaCss3Alt, name: "CSS", color: "text-blue-500" },
+    { icon: TbBrandJavascript, name: "JavaScript", color: "text-yellow-400" },
+    { icon: SiExpress, name: "Express.js", color: "text-green-400" },
+    { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+    { icon: SiMongodb, name: "MongoDB", color: "text-green-600" },
+    { icon: FaCuttlefish, name: "C", color: "text-blue-400" },
+    { icon: TbBrandCpp, name: "C++", color: "text-blue-600" },
+    { icon: SiPython, name: "Python", color: "text-yellow-500" },
+    { icon: FaDatabase, name: "DSA", color: "text-purple-500" },
+    { icon: SiGithub, name: "GitHub", color: "text-gray-400" },
+  ];
 
-      <div className="flex justify-center mt-5">
-        <Slider {...settings} className="w-[80%]">
-          {/* Skill Cards */}
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <FaHtml5 className="text-4xl mb-2 group-hover:scale-105 transition-all duration-300" />
-            <span>HTML</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <FaCss3Alt className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>CSS</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <TbBrandJavascript className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>JavaScript</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <SiExpress className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>Express.js</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <FaNodeJs className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>Node.js</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <SiMongodb className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>MongoDB</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <FaCuttlefish className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>C</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <TbBrandCpp className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>C++</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <SiPython className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>Python</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <FaDatabase className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>DSA</span>
-          </div>
-          <div className="w-24 p-4 flex flex-col items-center text-white group">
-            <SiGithub className="text-4xl mb-2 group-hover:scale-110 transition-all duration-300" />
-            <span>GitHub</span>
-          </div>
+  return (
+    <div className="py-20 bg-gradient-to-b from-slate-900 to-slate-800">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent mb-4">
+            Technical Skills
+          </h2>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            A showcase of my technical expertise and the technologies I work with
+          </p>
+        </div>
+
+        <Slider {...settings} className="w-full">
+          {skillCards.map((skill, index) => (
+            <div key={index} className="px-4">
+              <div className="bg-slate-700/30 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:transform hover:scale-105 transition-all duration-300">
+                <div className="flex flex-col items-center">
+                  <skill.icon className={`text-5xl ${skill.color} mb-4`} />
+                  <span className="text-white font-medium">{skill.name}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </Slider>
       </div>
     </div>

@@ -15,7 +15,7 @@ const education = [
   {
     degree: "Senior Secondary (12th)",
     institution: "RRK Sen. Sec. School, Chandausi",
-    duration: "2019 - 2021",
+    duration: "2019 - 2020",
     details: [
       "Percentage: 95.6%",
       "Stream: Science (PCM with Computer Science)",
@@ -24,7 +24,7 @@ const education = [
   {
     degree: "Secondary (10th)",
     institution: "RRK Sen. Sec. School, Chandausi",
-    duration: "2017 - 2019",
+    duration: "2017 - 2018",
     details: ["Percentage: 87%"],
   },
 ];

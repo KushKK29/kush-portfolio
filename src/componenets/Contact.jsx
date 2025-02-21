@@ -78,220 +78,145 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-slate-800 text-white w-full py-10">
+    <div className="bg-gradient-to-b from-slate-900 to-slate-800 text-white w-full py-20">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
-        <div
-          className="text-center mb-10"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
-          <h1 className="text-3xl font-bold">Get In Touch</h1>
-          <p className="text-lg mt-2">
-            I would love to connect with you. Reach out to me through any of the
-            following channels!
+        <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+            Let's Connect
+          </h1>
+          <p className="text-lg mt-4 text-gray-300 max-w-2xl mx-auto">
+            Have a project in mind or just want to chat? I'm always open to discussing new opportunities and ideas.
           </p>
         </div>
 
-        {/* Contact Form */}
-        <div
-          className="text-black flex justify-center mb-6 rounded-lg "
-          data-aos="fade-up"
-        >
-          <form
-            onSubmit={handleSubmit}
-            className="mt-6 bg-white p-4 rounded-lg"
-          >
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="first-name"
-                  className="block text-sm font-semibold text-gray-900"
+        <div className="grid md:grid-cols-2 gap-10">
+          {/* Contact Form */}
+          <div data-aos="fade-right">
+            <form onSubmit={handleSubmit} className="bg-slate-700/30 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+              <div className="space-y-6">
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">First Name</label>
+                    <input
+                      name="firstName"
+                      type="text"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      className="w-full bg-slate-800/50 border border-slate-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Last Name</label>
+                    <input
+                      name="lastName"
+                      type="text"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      className="w-full bg-slate-800/50 border border-slate-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                  <input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-slate-800/50 border border-slate-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full bg-slate-800/50 border border-slate-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  />
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    name="agreed"
+                    type="checkbox"
+                    checked={formData.agreed}
+                    onChange={handleChange}
+                    className="w-5 h-5 rounded border-slate-600"
+                  />
+                  <label className="text-sm text-gray-300">
+                    I agree to the privacy policy
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-lg font-medium hover:opacity-90 transition-all transform hover:scale-[1.02]"
                 >
-                  First Name
-                </label>
-                <input
-                  id="first-name"
-                  name="firstName"
-                  type="text"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
-                />
+                  Send Message
+                </button>
               </div>
-              <div>
-                <label
-                  htmlFor="last-name"
-                  className="block text-sm font-semibold text-gray-900"
-                >
-                  Last Name
-                </label>
-                <input
-                  id="last-name"
-                  name="lastName"
-                  type="text"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold text-gray-900"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-semibold text-gray-900"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="block w-full rounded-md border-2 border-gray-300 p-2 mt-2 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white"
-                />
-              </div>
-              <div className="flex gap-x-4 sm:col-span-2 items-center">
-                <input
-                  id="agreed"
-                  name="agreed"
-                  type="checkbox"
-                  checked={formData.agreed}
-                  onChange={handleChange}
-                  className="h-4 w-4 rounded border-2 border-gray-300"
-                />
-                <label htmlFor="agreed" className="text-sm text-gray-600">
-                  By selecting this, you agree to our{" "}
-                  <Link
-                    to="/privacy-policy"
-                    className="font-semibold text-indigo-600"
-                  >
-                    privacy&nbsp;policy
-                  </Link>
-                  .
-                </label>
+            </form>
+          </div>
+
+          {/* Contact Info */}
+          <div data-aos="fade-left" className="space-y-8">
+            <div className="bg-slate-700/30 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+                Contact Information
+              </h2>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 group">
+                  <div className="p-3 bg-blue-500/10 rounded-lg group-hover:bg-blue-500/20 transition-all">
+                    <IoIosCall className="text-2xl text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400">Phone</p>
+                    <p className="text-lg">+91-8279379218</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 group">
+                  <div className="p-3 bg-teal-500/10 rounded-lg group-hover:bg-teal-500/20 transition-all">
+                    <MdOutlineEmail className="text-2xl text-teal-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400">Email</p>
+                    <p className="text-lg">kushgoel279@gmail.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 group">
+                  <div className="p-3 bg-purple-500/10 rounded-lg group-hover:bg-purple-500/20 transition-all">
+                    <CiLocationOn className="text-2xl text-purple-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400">Location</p>
+                    <p className="text-lg">Chandausi, 177209</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <button
-              type="submit"
-              className="w-full bg-indigo-600 text-white py-2 mt-4 rounded-md hover:bg-indigo-500"
-            >
-              Let's talk
-            </button>
-          </form>
-        </div>
-        {/* Flex Layout for Columns */}
-        <div className="flex flex-wrap justify-between space-x-6 space-y-6 md:space-y-0">
-          {/* Left Column */}
-          <div
-            className="flex-1 bg-slate-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <h2 className="text-2xl font-semibold mb-4">Kush's Portfolio</h2>
-            <p className="text-lg">
-              Thank you for visiting my personal portfolio website. Connect with
-              me over socials.
-            </p>
-          </div>
 
-          {/* Center Column */}
-          <div
-            className="flex-1 bg-slate-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
-            <ul className="space-y-3 text-lg">
-              <li>
-                <Link
-                  to="intro"
-                  smooth={true}
-                  duration={300}
-                  className="hover:text-teal-400 cursor-pointer"
-                >
-                  Intro
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="skills"
-                  smooth={true}
-                  duration={300}
-                  className="hover:text-teal-400 cursor-pointer"
-                >
-                  Skills
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="projects"
-                  smooth={true}
-                  duration={300}
-                  className="hover:text-teal-400 cursor-pointer"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="education"
-                  smooth={true}
-                  duration={1000}
-                  className="hover:text-teal-400 cursor-pointer"
-                >
-                  Education
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="experience"
-                  smooth={true}
-                  duration={300}
-                  className="hover:text-teal-400 cursor-pointer"
-                >
-                  Experience
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Right Column */}
-          <div
-            className="flex-1 bg-slate-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <h2 className="text-2xl font-semibold mb-4">Contact Info</h2>
-            <div className="space-y-3 text-lg">
-              <p className="flex items-center space-x-2">
-                <IoIosCall className="text-teal-400 transform transition duration-300 hover:scale-110" />
-                <span>+91-8279379218</span>
-              </p>
-              <p className="flex items-center space-x-2">
-                <MdOutlineEmail className="text-teal-400 transform transition duration-300 hover:scale-110" />
-                <span>kushgoel279@gmail.com</span>
-              </p>
-              <p className="flex items-center space-x-2">
-                <CiLocationOn className="text-teal-400 transform transition duration-300 hover:scale-110" />
-                <span>Chandausi, 177209</span>
-              </p>
+            <div className="bg-slate-700/30 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+                Quick Links
+              </h2>
+              <div className="grid grid-cols-2 gap-4">
+                {['Intro', 'Skills', 'Projects', 'Education', 'Experience'].map((item) => (
+                  <Link
+                    key={item}
+                    to={item.toLowerCase()}
+                    className="px-4 py-2 bg-slate-800/50 rounded-lg hover:bg-slate-700/50 transition-all text-center"
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>

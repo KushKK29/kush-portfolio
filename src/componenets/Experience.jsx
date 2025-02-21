@@ -4,6 +4,16 @@ import "aos/dist/aos.css"; // AOS CSS
 
 const experience = [
   {
+    title: "Full Stack Web Developer",
+    company: "Slotin Solutions",
+    duration: "Dec. 2024 - Feb. 2025",
+    details: [
+      "Worked in a team of 3 to develop a full stack web application for a client.",
+      "Build a web application using MERN stack.",
+      "Skills: React.Js, Tailwind CSS, React-Slick, Node.Js, Express.Js, MongoDB, Mongoose",
+    ],
+  },
+  {
     title: "Question Analyst",
     company: "Demlo AI",
     duration: "2023 - 2024",
