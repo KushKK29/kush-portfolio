@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ecommerce from "./Ecommerce.mp4";
-import tradeshala from "tradeshala.mp4";
+import tradeshala from "./tradeshala.mp4";
 import sorting from "./sorting.mp4";
 import RBAC from "./Rbac.mp4";
 import AI from "./AiGen.mp4";
