@@ -29,8 +29,8 @@ const services = [
     description:
       "This project is based on creating and distributing roles by the admin.",
     videoUrl: RBAC, // Directly use video1 as the URL
-    githubRepo: "https://github.com/KushKK29/rbac-context",
-    liveDemo: "https://your-live-demo.com/rbac-system",
+    githubRepo: "https://github.com/KushKK29/Rbac-Website",
+    liveDemo: "https://rbac-website.vercel.app/",
   },
   {
     name: "AI Image Generator",
