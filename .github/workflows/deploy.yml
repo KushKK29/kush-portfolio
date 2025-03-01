@@ -3,7 +3,7 @@ name: Deploy React App
 on:
   push:
     branches:
-      - main  # Change this to your deployment branch
+      - main # Change this to your deployment branch
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Change to your required Node.js version
+          node-version: 18 # Change to your required Node.js version
 
       - name: Install dependencies
         run: npm install
