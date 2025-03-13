@@ -59,7 +59,7 @@ const Skills = () => {
 
   return (
     <div className="py-20 bg-gradient-to-b from-slate-900 to-slate-800">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent mb-4">
             Technical Skills
