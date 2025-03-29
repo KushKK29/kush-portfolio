@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ecommerce from "./Ecommerce.mp4";
 import tradeshala from "./tradeshala.mp4";
+import chatapp from "./chatapp.mp4";
 import sorting from "./sorting.mp4";
 import RBAC from "./Rbac.mp4";
 import AI from "./AiGen.mp4";
@@ -15,6 +16,14 @@ const services = [
     videoUrl: tradeshala, // Directly use video1 as the URL
     githubRepo: "https://github.com/rishvant/Trade-Shala",
     liveDemo: "https://trade-shala.vercel.app/",
+  },
+  {
+    name: "My-Chat-App",
+    description:
+      "This project is based on creating a chat application using React.js and socket.io. For achieving the real-time experience",
+    videoUrl: chatapp, // Directly use video1 as the URL
+    githubRepo: "https://github.com/KushKK29/My-Chat-App",
+    liveDemo: "https://my-chat-app-uhe2.onrender.com/",
   },
   {
     name: "Sorting-Visualizer",
