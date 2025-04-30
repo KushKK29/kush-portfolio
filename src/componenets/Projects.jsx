@@ -14,8 +14,8 @@ const services = [
     description:
       "This project is based on paper trading and stock market simulation with integrated ML models for sentiment analysis.",
     videoUrl: tradeshala, // Directly use video1 as the URL
-    githubRepo: "https://github.com/rishvant/Trade-Shala",
-    liveDemo: "https://trade-shala.vercel.app/",
+    githubRepo: "https://github.com/KushKK29/Trade_Shala",
+    liveDemo: "https://trade-shala-inky.vercel.app/",
   },
   {
     name: "My-Chat-App",
