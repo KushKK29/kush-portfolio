@@ -1,10 +1,4 @@
 import React, { useEffect } from "react";
-import ecommerce from "./Ecommerce.mp4";
-import tradeshala from "./tradeshala.mp4";
-import chatapp from "./chatapp.mp4";
-import sorting from "./sorting.mp4";
-import RBAC from "./Rbac.mp4";
-import AI from "./AiGen.mp4";
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
 
@@ -13,15 +7,26 @@ const services = [
     name: "Trade-Shala",
     description:
       "This project is based on paper trading and stock market simulation with integrated ML models for sentiment analysis.",
-    videoUrl: tradeshala, // Directly use video1 as the URL
+    videoUrl:
+      "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750581551/erf4zskth9fqi5ymggob.mp4", // Directly use video1 as the URL
     githubRepo: "https://github.com/KushKK29/Trade_Shala",
     liveDemo: "https://trade-shala-inky.vercel.app/",
+  },
+  {
+    name: "MHope - Paitent's AI Friend",
+    description:
+      "AI-based healthcare platform with smart dashboards and diagnostic tools for all users.",
+    videoUrl:
+      "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750583144/fvzvmyascjyscswgs6i5.mp4", // Replace with actual MHope video if different
+    githubRepo: "https://github.com/KushKK29/Mhope", // Replace with your actual repo URL
+    liveDemo: "https://m-hope.vercel.app/",
   },
   {
     name: "My-Chat-App",
     description:
       "This project is based on creating a chat application using React.js and socket.io. For achieving the real-time experience",
-    videoUrl: chatapp, // Directly use video1 as the URL
+    videoUrl:
+      "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750581848/sn3jo2zov2gpde8euljk.mp4", // Directly use video1 as the URL
     githubRepo: "https://github.com/KushKK29/My-Chat-App",
     liveDemo: "https://my-chat-app-uhe2.onrender.com/",
   },
@@ -29,7 +34,8 @@ const services = [
     name: "Sorting-Visualizer",
     description:
       "This project is based on various sorting algorithms and their visualizations.",
-    videoUrl: sorting, // Directly use video1 as the URL
+    videoUrl:
+      "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750581780/y6d3kr0yv3jafmrtvad0.mp4", // Directly use video1 as the URL
     githubRepo: "https://github.com/KushKK29/Sorting-Visualiser",
     liveDemo: "https://sorting-visualiser-eosin.vercel.app/",
   },
@@ -37,7 +43,8 @@ const services = [
     name: "RBAC System",
     description:
       "This project is based on creating and distributing roles by the admin.",
-    videoUrl: RBAC, // Directly use video1 as the URL
+    videoUrl:
+      "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750581802/eh5fiathe3mwpluzl6py.mp4", // Directly use video1 as the URL
     githubRepo: "https://github.com/KushKK29/Rbac-Website",
     liveDemo: "https://rbac-website.vercel.app/",
   },
@@ -45,7 +52,8 @@ const services = [
     name: "AI Image Generator",
     description:
       "In this project, the image is generated using a machine learning model based on the prompt entered.",
-    videoUrl: AI, // Add the video URL here
+    videoUrl:
+      "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750581906/au23yzjlpzjbex6wzh8j.mp4", // Add the video URL here
     githubRepo:
       "https://github.com/KushKK29/react-peoject-2/tree/main/vite-project",
     liveDemo: "https://kushkk29.github.io/AI-Image-Generator/",
@@ -53,7 +61,8 @@ const services = [
   {
     name: "E-commerce Website",
     description: "This is my first project related to React.js.",
-    videoUrl: ecommerce, // Add the video URL here
+    videoUrl:
+      "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750581886/prm375pouizdzdq3skyr.mp4", // Add the video URL here
     githubRepo: "https://github.com/KushKK29/E-Commerce_Website",
     liveDemo: "https://kushkk29.github.io/E-Commerce_Website/",
   },

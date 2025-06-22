@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import image1 from "./fghm.png";
 import Lottie from "react-lottie";
 import githubAnimation from "./Githubb.json"; // replace with your Lottie file path
 import linkedinAnimation from "./LinkedInn.json"; // replace with your Lottie file path
@@ -88,7 +87,7 @@ const Intro = () => {
   const handleResumeClick = () => {
     // Replace with your resume URL
     const resumeUrl =
-      "https://drive.google.com/file/d/1wEEL_rz2nltDwzFE_gcnw2FMZEpXz2pb/view?usp=sharing";
+      "https://drive.google.com/file/d/1KgJ0VR_6Ve_B28ZBCupb2Cw52CXI2WU6/view?usp=sharing";
     window.open(resumeUrl, "_blank");
   };
 
@@ -310,7 +309,7 @@ const Intro = () => {
               onMouseMove={handleMouseMove}
             >
               <img
-                src={image1}
+                src="https://res.cloudinary.com/dtkjjaxwn/image/upload/v1743262128/gcldnxjn7naqohten61y.png"
                 alt="Kush Goel"
                 className="rounded-full shadow-lg w-40 h-40 sm:w-52 sm:h-52 md:w-72 md:h-72 lg:w-96 lg:h-96 object-contain transition duration-300 hover:scale-105"
                 style={style}
