@@ -87,7 +87,7 @@ const Intro = () => {
   const handleResumeClick = () => {
     // Replace with your resume URL
     const resumeUrl =
-      "https://drive.google.com/file/d/1KgJ0VR_6Ve_B28ZBCupb2Cw52CXI2WU6/view?usp=sharing";
+      "https://drive.google.com/file/d/1T5sMbowut_A7bCY4M-9T3NZK0lX-nYkT/view?usp=sharing";
     window.open(resumeUrl, "_blank");
   };
 
