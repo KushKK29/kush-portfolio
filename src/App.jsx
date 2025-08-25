@@ -8,31 +8,37 @@ import Experience from "./componenets/Experience";
 import Education from "./componenets/Education";
 import Contact from "./componenets/Contact";
 import MagicCursor from "./componenets/MagicCursor";
+import SEO from "./componenets/SEO";
 const App = () => {
   return (
     <div className="bg-slate-800 min-h-screen w-full text-white flex flex-col overflow-hidden">
+      {/* SEO Component */}
+      <SEO />
+      
       {/* Add MagicCursor */}
       <MagicCursor />
 
-      <div id="intro" className="mt-0">
-        <Intro />
-      </div>
-      <div id="skills">
-        <Skills />
-      </div>
-      
-      <div id="projects">
-        <Projects />
-      </div>
-      <div id="education">
-        <Education />
-      </div>
-      <div id="experience">
-        <Experience />
-      </div>
-      <div id="contact">
-        <Contact />
-      </div>
+      <main>
+        <section id="intro" className="mt-0">
+          <Intro />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="education">
+          <Education />
+        </section>
+        <section id="experience">
+          <Experience />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
     </div>
   );
 };
