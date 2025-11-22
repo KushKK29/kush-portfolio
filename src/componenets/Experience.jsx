@@ -4,6 +4,16 @@ import "aos/dist/aos.css"; // AOS CSS
 
 const experience = [
   {
+    title: "SDE Intern",
+    company: "GeeksforGeeks",
+    duration: "Oct. 20255 - Present",
+    details: [
+      "Collaborated with a team to develop and enhance web applications.",
+      "Build a web application using NextJs",
+      "Skills: NextJS, SCSS, Redux",
+    ],
+  },
+  {
     title: "Full Stack Web Developer",
     company: "Slotin Solutions",
     duration: "Dec. 2024 - Feb. 2025",
