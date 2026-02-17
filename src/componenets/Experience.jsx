@@ -10,7 +10,7 @@ const experience = [
     details: [
       "Integrated the onBoarding flow for Agent PI and Agent Miia.",
       "Designed the Compatibilty section in the full profile menu.",
-      "Skills: NextJS, SCSS, Redux, Django, PHP",
+      "Skills: Angular, Python, React, Fast API, AWS, NextJS, SCSS, Redux, Django, PHP",
     ],
   },
   {
