@@ -4,13 +4,23 @@ import "aos/dist/aos.css"; // AOS CSS
 
 const experience = [
   {
+    title: "Software Engineer Intern",
+    company: "Humantic AI",
+    duration: "Jan. 2026 - Present",
+    details: [
+      "Integrated the onBoarding flow for Agent PI and Agent Miia.",
+      "Designed the Compatibilty section in the full profile menu.",
+      "Skills: NextJS, SCSS, Redux, Django, PHP",
+    ],
+  },
+  {
     title: "SDE Intern",
     company: "GeeksforGeeks",
-    duration: "Oct. 20255 - Present",
+    duration: "Oct. 2025 - January 2026",
     details: [
-      "Collaborated with a team to develop and enhance web applications.",
-      "Build a web application using NextJs",
-      "Skills: NextJS, SCSS, Redux",
+      "Developed a Recruiter Dashboard serving 200+ active users, implementing 5+ advanced filters and reducing candidate search time by 40%.",
+      "Migrated the complete internal organizational dashboard from PHP to Next.js, refactoring 30+ modules, improving page load performance by 50%, and reducing maintenance effort by 35%. ",
+      "Skills: NextJS, SCSS, Redux, Django, PHP",
     ],
   },
   {
