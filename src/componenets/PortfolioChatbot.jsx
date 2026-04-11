@@ -298,6 +298,10 @@ export default function PortfolioChatbot() {
   const [fallbackReason, setFallbackReason] = useState("");
   const [sessionId] = useState(() => session?.sessionId ?? `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
 
+  const [showBubble, setShowBubble] = useState(false);
+  const [bubbleText, setBubbleText] = useState("");
+  const fullBubbleText = "Know about Kush using personalised chatbot ⚡";
+
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const abortRef = useRef(null);
@@ -305,6 +309,7 @@ export default function PortfolioChatbot() {
   const currentTextRef = useRef("");
   const pendingSourcesRef = useRef([]);
   const pendingDegradedRef = useRef(false);
+  const hasOpenedRef = useRef(false);
 
   useEffect(() => {
     const onHashChange = () => {
@@ -320,6 +325,34 @@ export default function PortfolioChatbot() {
       window.removeEventListener("openChat", onOpenChat);
     };
   }, []);
+
+  useEffect(() => {
+    let timer;
+    if (isOpen) {
+      hasOpenedRef.current = true;
+      setShowBubble(false);
+    } else if (!hasOpenedRef.current) {
+      timer = setTimeout(() => {
+        setShowBubble(true);
+      }, 1000);
+    }
+    return () => clearTimeout(timer);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (showBubble) {
+      let i = 0;
+      setBubbleText("");
+      const interval = setInterval(() => {
+        i++;
+        setBubbleText(fullBubbleText.slice(0, i));
+        if (i >= fullBubbleText.length) {
+          clearInterval(interval);
+        }
+      }, 40);
+      return () => clearInterval(interval);
+    }
+  }, [showBubble, fullBubbleText]);
 
   useEffect(() => {
     saveSession(messages, sessionId);
@@ -516,6 +549,28 @@ export default function PortfolioChatbot() {
 
   return (
     <>
+      <AnimatePresence>
+        {!isOpen && showBubble && (
+          <motion.div
+            initial={{ opacity: 0, y: 15, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="fixed bottom-[92px] right-6 z-40 max-w-[220px] rounded-2xl rounded-br-sm border border-white/10 bg-slate-900/90 p-3 text-sm font-medium text-cyan-50 shadow-2xl shadow-blue-950/50 backdrop-blur-xl cursor-pointer"
+            onClick={openChat}
+          >
+            <div className="flex flex-col gap-1 w-full relative">
+               <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">👋 Welcome!</span>
+               <p className="leading-snug">
+                 {bubbleText}
+                 <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-cyan-400 align-middle shadow-[0_0_8px_rgba(34,211,238,0.8)] rounded-sm" />
+               </p>
+            </div>
+            <div className="absolute -bottom-2 right-4 h-4 w-4 rotate-45 border-b border-r border-white/10 bg-slate-900/90 backdrop-blur-xl" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.button
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 0.75 }}
@@ -626,7 +681,12 @@ export default function PortfolioChatbot() {
                         </div>
                       ) : null}
 
-                      <p className="whitespace-pre-wrap">{message.role === "assistant" ? parseMarkdownContent(message.content) : message.content}</p>
+                      <p className="whitespace-pre-wrap">
+                        {message.role === "assistant" ? parseMarkdownContent(message.content) : message.content}
+                        {message.role === "assistant" && isStreaming && index === messages.length - 1 && (
+                          <span className="ml-1 inline-block h-3.5 w-1.5 animate-pulse bg-white align-middle shadow-[0_0_6px_rgba(255,255,255,0.7)] rounded-sm" />
+                        )}
+                      </p>
 
                       {message.role === "assistant" && Array.isArray(message.sources) && message.sources.length > 0 && (
                         <div className="mt-3 flex flex-wrap gap-2">
