@@ -38,7 +38,7 @@ const sourceAnchors = {
 };
 
 const initialGreeting =
-  "Hey, I’m Kush’s portfolio assistant. Ask me about projects, skills, education, experience, or how to reach him.";
+  "Hey, I'm Kush! Ask me anything about my projects, skills, or experience. 🚀";
 
 function loadSession() {
   try {
@@ -300,6 +300,7 @@ export default function PortfolioChatbot() {
 
   const [showBubble, setShowBubble] = useState(false);
   const [bubbleText, setBubbleText] = useState("");
+  const [isBubbleDismissed, setIsBubbleDismissed] = useState(false);
   const fullBubbleText = "Know about Kush using personalised chatbot ⚡";
 
   const messagesEndRef = useRef(null);
@@ -328,31 +329,46 @@ export default function PortfolioChatbot() {
 
   useEffect(() => {
     let timer;
-    if (isOpen) {
-      hasOpenedRef.current = true;
+    if (isOpen || isBubbleDismissed) {
       setShowBubble(false);
-    } else if (!hasOpenedRef.current) {
+    } else {
       timer = setTimeout(() => {
         setShowBubble(true);
       }, 1000);
     }
     return () => clearTimeout(timer);
-  }, [isOpen]);
+  }, [isOpen, isBubbleDismissed]);
 
   useEffect(() => {
-    if (showBubble) {
+    let timeoutId;
+    let intervalId;
+
+    const startTyping = () => {
       let i = 0;
       setBubbleText("");
-      const interval = setInterval(() => {
+      intervalId = setInterval(() => {
         i++;
         setBubbleText(fullBubbleText.slice(0, i));
         if (i >= fullBubbleText.length) {
-          clearInterval(interval);
+          clearInterval(intervalId);
+          timeoutId = setTimeout(() => {
+            if (showBubble && !isBubbleDismissed) {
+              startTyping();
+            }
+          }, 3000); // 3 seconds pause before repeating
         }
       }, 40);
-      return () => clearInterval(interval);
+    };
+
+    if (showBubble && !isBubbleDismissed) {
+      startTyping();
     }
-  }, [showBubble, fullBubbleText]);
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, [showBubble, isBubbleDismissed, fullBubbleText]);
 
   useEffect(() => {
     saveSession(messages, sessionId);
@@ -559,6 +575,16 @@ export default function PortfolioChatbot() {
             className="fixed bottom-[92px] right-6 z-40 max-w-[220px] rounded-2xl rounded-br-sm border border-white/10 bg-slate-900/90 p-3 text-sm font-medium text-cyan-50 shadow-2xl shadow-blue-950/50 backdrop-blur-xl cursor-pointer"
             onClick={openChat}
           >
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsBubbleDismissed(true);
+              }}
+              className="absolute -top-2 -right-2 z-50 flex h-5 w-5 items-center justify-center rounded-full bg-slate-800 border border-white/20 text-slate-300 hover:text-white hover:bg-slate-700 shadow-md transition-colors"
+              aria-label="Dismiss message"
+            >
+              <FiX strokeWidth={3} className="h-3 w-3" />
+            </button>
             <div className="flex flex-col gap-1 w-full relative">
                <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">👋 Welcome!</span>
                <p className="leading-snug">
@@ -573,14 +599,17 @@ export default function PortfolioChatbot() {
 
       <motion.button
         initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, scale: 0.75 }}
-        whileHover={{ scale: 0.8 }}
-        whileTap={{ scale: 0.7 }}
+        animate={{ opacity: 1, scale: 0.99 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
         onClick={isOpen ? closeChat : openChat}
-        className="fixed bottom-5 right-5 z-50 h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-400 text-white shadow-2xl shadow-blue-950/40 flex items-center justify-center border border-white/10"
+        className="fixed bottom-5 right-5 z-50 h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-400 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center justify-center border-[3px] border-emerald-500 p-0 hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] transition-shadow duration-300"
         aria-label={isOpen ? "Close chat" : "Open portfolio chat"}
       >
+        {!isOpen && (
+          <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-md animate-[pulse_2s_ease-in-out_infinite]" />
+        )}
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.span
@@ -597,15 +626,20 @@ export default function PortfolioChatbot() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="relative flex items-center justify-center"
+              className="relative flex h-full w-full items-center justify-center rounded-full overflow-hidden"
             >
-              <FiMessageSquare className="text-2xl" />
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400 text-[10px] font-bold text-slate-950">
-                <FiZap />
-              </span>
+              <img 
+                src="https://res.cloudinary.com/dtkjjaxwn/image/upload/q_auto/f_auto/v1775943663/Gemini_Generated_Image_7k3lub7k3lub7k3l_fsjvg0.png" 
+                alt="Open chat" 
+                className="h-full w-full object-cover"
+              />
             </motion.span>
           )}
         </AnimatePresence>
+        
+        {!isOpen && (
+          <span className="absolute -bottom-1 -left-1 h-5 w-5 rounded-full border-[3px] border-slate-900 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)]"></span>
+        )}
       </motion.button>
 
       <AnimatePresence>
@@ -617,36 +651,32 @@ export default function PortfolioChatbot() {
             transition={{ type: "spring", stiffness: 280, damping: 26 }}
             className="fixed bottom-24 right-5 z-50 flex h-[min(78vh,640px)] w-[min(92vw,420px)] flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl"
           >
-            <div className="border-b border-white/10 bg-gradient-to-r from-blue-500/15 via-cyan-500/10 to-teal-500/15 px-5 py-4">
+            <div className="border-b border-white/10 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-5 py-4">
               <div className="flex items-center justify-between gap-3">
-                <div>
-                  <div className="text-xs uppercase tracking-[0.3em] text-cyan-200/70">Portfolio Assistant</div>
-                  <h3 className="mt-1 text-lg font-semibold text-white">Ask about Kush</h3>
-                </div>
-                <div className="hidden sm:flex items-center gap-2">
-                  <span
-                    className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
-                      chatMode === "ai"
-                        ? "bg-emerald-500/20 text-emerald-200 border border-emerald-400/30"
-                        : chatMode === "pending"
-                          ? "bg-cyan-500/20 text-cyan-200 border border-cyan-400/30"
-                          : "bg-amber-500/20 text-amber-200 border border-amber-400/30"
-                    }`}
-                  >
-                    {chatMode === "ai" ? "AI mode" : chatMode === "pending" ? "Thinking" : "Fallback"}
-                  </span>
+                <div className="flex items-center gap-3">
+                  <div className="relative">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg text-lg font-bold overflow-hidden">
+                      <img 
+                        src="https://res.cloudinary.com/dtkjjaxwn/image/upload/q_auto/f_auto/v1775943663/Gemini_Generated_Image_7k3lub7k3lub7k3l_fsjvg0.png" 
+                        alt="Kush Goel" 
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <span className="absolute bottom-0.5 right-0 h-2.5 w-2.5 rounded-full border-2 border-slate-900 bg-emerald-500"></span>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-white leading-none">Kush Goel</h3>
+                    <p className="mt-1 text-xs text-slate-400">Ask anything about Kush</p>
+                  </div>
                 </div>
                 <button
                   onClick={closeChat}
                   className="rounded-full border border-white/10 bg-white/5 p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-                  aria-label="Close portfolio chat"
+                  aria-label="Close chat"
                 >
                   <FiChevronDown />
                 </button>
               </div>
-              <p className="mt-2 text-sm text-slate-300/80">
-                Projects, skills, experience, education, or contact details.
-              </p>
             </div>
 
             <div className="flex-1 overflow-y-auto px-4 py-4" style={{ scrollbarWidth: "none" }}>
@@ -732,25 +762,17 @@ export default function PortfolioChatbot() {
                       sendMessage();
                     }
                   }}
-                  placeholder="Ask something about Kush..."
-                  className="min-w-0 flex-1 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-400 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/20"
+                  placeholder="Type a message..."
+                  className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white outline-none placeholder:text-slate-400 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/20 transition-all"
                 />
                 <button
                   onClick={() => sendMessage()}
-                  className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-3 text-white transition-transform hover:scale-[1.02]"
+                  className="flex h-[46px] w-[46px] flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg transition-transform hover:scale-[1.05] active:scale-[0.95]"
                   aria-label="Send message"
                 >
-                  <FiSend />
+                  <FiSend className="ml-1 text-lg" />
                 </button>
               </div>
-              <p className="mt-2 text-xs text-slate-400">
-                Streaming assistant powered by server-side Gemini when available.
-              </p>
-              {chatMode !== "ai" && chatMode !== "pending" && fallbackReason ? (
-                <p className="mt-1 text-[11px] text-amber-300/90">
-                  Debug fallback reason: {fallbackReason}
-                </p>
-              ) : null}
             </div>
           </motion.div>
         )}
