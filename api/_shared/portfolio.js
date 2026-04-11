@@ -138,14 +138,6 @@ const projects = [
     live: "https://sorting-visualiser-eosin.vercel.app/"
   },
   {
-    name: "RBAC System",
-    description: "Role-based access control system distributing roles via an admin panel.",
-    tech: ["React.js", "Node.js"],
-    metrics: ["admin role permissions"],
-    github: "https://github.com/KushKK29/Rbac-Website",
-    live: "https://rbac-website.vercel.app/"
-  },
-  {
     name: "AI Image Generator",
     description: "Generates images from prompts using a machine learning model.",
     tech: ["React.js", "Machine Learning"],
@@ -333,10 +325,6 @@ export function buildFallbackAnswer(query) {
 
   if (/sorting/.test(lower)) {
     return { text: "Sorting-Visualizer shows how sorting algorithms work through interactive visualizations.", sources: [portfolioSections[1]] };
-  }
-
-  if (/rbac/.test(lower)) {
-    return { text: "RBAC System is a role-based access control project focused on admin-led role distribution and permissions.", sources: [portfolioSections[1]] };
   }
 
   if (/image generator/.test(lower)) {
