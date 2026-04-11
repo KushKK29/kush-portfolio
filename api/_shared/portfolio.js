@@ -230,7 +230,7 @@ export function searchPortfolio(query, limit = 3) {
 
     // Semantic/Intent-Based Dynamic Weighting
     const qLower = query.toLowerCase();
-    if (section.id === "projects" && /trade|shala|mhope|chat|sorting|rbac|image|e-commerce|project|build|built|create|app|platform/.test(qLower)) {
+    if (section.id === "projects" && /trade|shala|mhope|chat|sorting|image|e-commerce|project|build|built|create|app|platform/.test(qLower)) {
       score += 8;
     }
 

@@ -185,7 +185,7 @@ function buildLocalFallbackResponse(query) {
   if (/project|portfolio|built/.test(text)) {
     return {
       text:
-        "I’ve built projects like Trade-Shala, MHope, My-Chat-App, Sorting-Visualizer, RBAC System, an AI Image Generator, and an E-commerce Website. If you want, I can summarize the stack or highlight the most relevant one.",
+        "I’ve built projects like Trade-Shala, MHope, My-Chat-App, Sorting-Visualizer, . If you want, I can summarize the stack or highlight the most relevant one.",
       sources: ["projects"],
     };
   }
