@@ -12,10 +12,23 @@ This repository contains the source for **Kush Goel's** portfolio website. The s
 
 ## ✨ Highlights / Features
 - Responsive single-page portfolio (hero, projects, skills, experience, education, contact)
+- Floating portfolio chatbot with streaming replies and source badges
 - SEO-ready: includes `generate-sitemap.js` and `SEO_SETUP_GUIDE.md`
 - Fast build using **Vite + React**
 - Tailwind CSS for utility-first styling
 - Simple deploy pipeline (Vercel recommended)
+
+## 🤖 Chatbot Setup
+The chatbot uses a server-side Gemini API route in `api/chat.js`.
+
+Create a local `.env` file from `.env.example` and set:
+
+```bash
+GEMINI_API_KEY=your_key_here
+GEMINI_MODEL=gemini-2.0-flash
+```
+
+If the API is unavailable, the widget falls back to a local response mode so the site still works during development.
 
 ---
 

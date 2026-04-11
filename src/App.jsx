@@ -9,6 +9,7 @@ import Education from "./componenets/Education";
 import Contact from "./componenets/Contact";
 import MagicCursor from "./componenets/MagicCursor";
 import SEO from "./componenets/SEO";
+import PortfolioChatbot from "./componenets/PortfolioChatbot";
 const App = () => {
   return (
     <div className="bg-slate-800 min-h-screen w-full text-white flex flex-col overflow-hidden">
@@ -39,6 +40,8 @@ const App = () => {
           <Contact />
         </section>
       </main>
+
+      <PortfolioChatbot />
     </div>
   );
 };

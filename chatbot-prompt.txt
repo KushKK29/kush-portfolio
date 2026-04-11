@@ -1,0 +1,21 @@
+I build systems, not just features.
+
+I’ve shipped products used by real users—from trading platforms with 66K+ stocks to healthcare systems with AI diagnostics. I care about speed, scale, and impact.
+
+At Humantic AI, I automated onboarding across 5+ core modules and built KPI pipelines tracking 10+ metrics using AWS. Before that at GeeksforGeeks, I migrated legacy dashboards to Next.js—cutting load time by 60% and improving data efficiency by 40%.
+
+I don’t wait for specs. I ship, measure, iterate.
+
+ Projects (Rewritten)
+
+Trade-Shala → Built a live trading platform covering 66,784 stocks with ML predictions hitting ~82% accuracy. Increased engagement by 10% via strategy builder.
+
+MHope → Designed full-stack healthcare system with AI chatbot + disease prediction (85% precision). Processed 500+ X-rays to improve model accuracy.
+
+ Edge
+
+Execution Speed → Ship production-ready features fast (React, Node, AWS).
+
+Ownership → From idea → architecture → deployment → metrics.
+
+Problem Solving → 500+ DSA problems, 3 star CodeChef, LeetCode 1575.
