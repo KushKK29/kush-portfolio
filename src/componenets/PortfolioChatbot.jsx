@@ -586,7 +586,7 @@ export default function PortfolioChatbot() {
               <FiX strokeWidth={3} className="h-3 w-3" />
             </button>
             <div className="flex flex-col gap-1 w-full relative">
-               <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400">👋 Welcome!</span>
+               <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">👋 Welcome!</span>
                <p className="leading-snug">
                  {bubbleText}
                  <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-cyan-400 align-middle shadow-[0_0_8px_rgba(34,211,238,0.8)] rounded-sm" />
@@ -702,11 +702,11 @@ export default function PortfolioChatbot() {
                   >
                     <div
                       className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                        message.role === "user" ? "bg-blue-500 text-white" : "bg-white/7 text-slate-100"
+                        message.role === "user" ? "bg-blue-500 text-white" : "bg-white/7 text-white"
                       }`}
                     >
                       {message.role === "assistant" && message.ragDegraded ? (
-                        <div className="mb-2 rounded-lg border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] text-amber-200">
+                        <div className="mb-2 rounded-lg border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs text-amber-200">
                           Answering without full context access.
                         </div>
                       ) : null}
@@ -724,7 +724,7 @@ export default function PortfolioChatbot() {
                             <button
                               key={`${source.id}-${source.anchor}-${sourceIndex}`}
                               onClick={() => scrollToSection(source.anchor)}
-                              className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-cyan-100 transition-colors hover:bg-white/15"
+                              className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-cyan-100 transition-colors hover:bg-white/15"
                             >
                               {source.label}
                             </button>
@@ -739,9 +739,9 @@ export default function PortfolioChatbot() {
                   <div className="flex justify-start">
                     <div className="rounded-2xl bg-white/7 px-4 py-3 text-sm text-slate-200">
                       <span className="inline-flex gap-1">
-                        <span className="h-2 w-2 animate-bounce rounded-full bg-cyan-300 [animation-delay:-0.2s]" />
-                        <span className="h-2 w-2 animate-bounce rounded-full bg-cyan-300 [animation-delay:-0.1s]" />
-                        <span className="h-2 w-2 animate-bounce rounded-full bg-cyan-300" />
+                        <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-300 [animation-delay:-0.2s]" />
+                        <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-300 [animation-delay:-0.1s]" />
+                        <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-300" />
                       </span>
                     </div>
                   </div>

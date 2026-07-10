@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-10T00:00:00.000Z",
+  "title": "Design System: Kush Goel Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Signal Blue", "canonical": "#2563eb", "tonalRamp": ["#1e3a8a", "#1d4ed8", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd", "#bfdbfe", "#dbeafe"] },
+      "primary-hover": { "role": "primary", "displayName": "Signal Blue (Hover)", "canonical": "#3b82f6", "tonalRamp": ["#1e3a8a", "#1d4ed8", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd", "#bfdbfe", "#dbeafe"] },
+      "accent-cyan": { "role": "secondary", "displayName": "Console Cyan", "canonical": "#22d3ee", "tonalRamp": ["#164e63", "#0e7490", "#0891b2", "#06b6d4", "#22d3ee", "#67e8f9", "#a5f3fc", "#cffafe"] },
+      "accent-emerald": { "role": "tertiary", "displayName": "Online Emerald", "canonical": "#10b981", "tonalRamp": ["#064e3b", "#047857", "#059669", "#10b981", "#34d399", "#6ee7b7", "#a7f3d0", "#d1fae5"] },
+      "neutral-bg-deep": { "role": "neutral", "displayName": "Void Black", "canonical": "#020617", "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "neutral-bg": { "role": "neutral", "displayName": "Deep Slate", "canonical": "#0f172a", "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "neutral-surface": { "role": "neutral", "displayName": "Console Slate", "canonical": "#1e293b", "tonalRamp": ["#020617", "#0f172a", "#1e293b", "#334155", "#475569", "#64748b", "#94a3b8", "#cbd5e1"] },
+      "neutral-border": { "role": "neutral", "displayName": "Glass Border", "canonical": "rgba(255,255,255,0.1)", "tonalRamp": ["rgba(255,255,255,0.05)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.15)", "rgba(255,255,255,0.2)", "rgba(255,255,255,0.3)", "rgba(255,255,255,0.5)", "rgba(255,255,255,0.7)"] },
+      "text-primary": { "role": "neutral", "displayName": "White", "canonical": "#ffffff", "tonalRamp": ["#0f172a", "#334155", "#64748b", "#94a3b8", "#cbd5e1", "#e2e8f0", "#f1f5f9", "#ffffff"] },
+      "text-secondary": { "role": "neutral", "displayName": "Instrument Gray", "canonical": "#d1d5db", "tonalRamp": ["#111827", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#e5e7eb", "#f3f4f6"] },
+      "text-muted": { "role": "neutral", "displayName": "Instrument Gray (Muted)", "canonical": "#9ca3af", "tonalRamp": ["#111827", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#e5e7eb", "#f3f4f6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The intro's name/greeting line — the one moment of full weight." },
+      "headline": { "displayName": "Headline", "purpose": "Section intros and case study titles." },
+      "title": { "displayName": "Title", "purpose": "Sub-headlines and the typed rotating-text line." },
+      "body": { "displayName": "Body", "purpose": "Prose in case studies and chatbot replies, capped 65–75ch." },
+      "label": { "displayName": "Label", "purpose": "Eyebrow text, chip labels, status captions." }
+    },
+    "shadows": [
+      { "name": "ambient-panel", "value": "0 30px 80px rgba(0,0,0,0.45)", "purpose": "Lift large floating panels (chat window, section overlay) off the background." },
+      { "name": "accent-glow-emerald", "value": "0 0 20px rgba(16,185,129,0.4)", "purpose": "Resting glow under the chat launcher and status dot." },
+      { "name": "accent-glow-emerald-hover", "value": "0 0 25px rgba(16,185,129,0.8)", "purpose": "Brightened glow on hover/focus for live elements." },
+      { "name": "popover", "value": "0 4px 6px rgba(0,0,0,0.3)", "purpose": "Small floating controls: close buttons, dismiss chips." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for hover/background transitions." },
+      { "name": "pulse-status", "value": "pulse 2s ease-in-out infinite", "purpose": "The online-status glow pulse — asserts liveness, reserved for the status signal only." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid CTA — e.g. Download Resume.",
+      "html": "<button class=\"ds-btn-primary\">Download Resume</button>",
+      "css": ".ds-btn-primary { background: #2563eb; color: #ffffff; padding: 12px 24px; border-radius: 6px; font-weight: 600; letter-spacing: 0.025em; border: none; transition: background 0.3s ease; cursor: pointer; } .ds-btn-primary:hover, .ds-btn-primary:focus-visible { background: #3b82f6; } .ds-btn-primary:active { background: #1d4ed8; }"
+    },
+    {
+      "name": "Suggestion Chip",
+      "kind": "chip",
+      "refersTo": "chip-suggestion",
+      "description": "Cyan-tinted pill, e.g. chatbot suggested prompts.",
+      "html": "<button class=\"ds-chip\">Ask about experience</button>",
+      "css": ".ds-chip { background: rgba(34,211,238,0.1); color: #67e8f9; border: 1px solid rgba(34,211,238,0.2); border-radius: 9999px; padding: 6px 12px; font-size: 12px; font-weight: 500; transition: background 0.2s ease; cursor: pointer; } .ds-chip:hover, .ds-chip:focus-visible { background: rgba(34,211,238,0.2); }"
+    },
+    {
+      "name": "Glass Nav",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Fixed top navigation pill.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-item\">Projects</a><a href=\"#\" class=\"ds-nav-item\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; justify-content: center; gap: 24px; background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border-radius: 8px; padding: 16px 32px; } .ds-nav-item { color: #ffffff; font-size: 14px; text-decoration: none; padding: 4px 8px; border-radius: 6px; transition: background 0.2s ease, color 0.2s ease; } .ds-nav-item:hover, .ds-nav-item:focus-visible { background: #475569; color: #f8fafc; }"
+    },
+    {
+      "name": "Chat Launcher (FAB)",
+      "kind": "custom",
+      "refersTo": "fab-chatbot",
+      "description": "Signature floating action button with the Online Emerald status ring — the site's one deliberate liveness signal.",
+      "html": "<button class=\"ds-fab\" aria-label=\"Open chat\"><span class=\"ds-fab-status\"></span>Chat</button>",
+      "css": ".ds-fab { position: relative; width: 64px; height: 64px; border-radius: 9999px; background: linear-gradient(135deg, #3b82f6, #06b6d4, #34d399); border: 3px solid #10b981; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(16,185,129,0.4); transition: box-shadow 0.3s ease; cursor: pointer; } .ds-fab:hover, .ds-fab:focus-visible { box-shadow: 0 0 25px rgba(16,185,129,0.8); } .ds-fab-status { position: absolute; bottom: -4px; left: -4px; width: 20px; height: 20px; border-radius: 9999px; border: 3px solid #0f172a; background: #10b981; box-shadow: 0 0 10px rgba(16,185,129,0.8); }"
+    },
+    {
+      "name": "Glass Panel",
+      "kind": "card",
+      "refersTo": "panel-glass",
+      "description": "Floating glass surface — chat window, focused-section overlay.",
+      "html": "<div class=\"ds-panel\">Ask anything about Kush</div>",
+      "css": ".ds-panel { background: rgba(2,6,23,0.95); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 20px; color: #ffffff; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Deep Space Dashboard",
+    "overview": "The site reads as instrumentation floating in near-black space: gradients fall from slate to pure black, glass panels hover above that void with backdrop blur, and small glowing signals (an emerald \"online\" pulse, a cyan highlight) report that the system is live rather than decorative. The personality is confident and technical — restraint carries the weight, not ornament. Every glow, pill, and pulse is functional: it tells the visitor something (this is clickable, this is live, this is currently focused), never purely decorative. This system explicitly rejects the generic templated-portfolio look: no stock hero-plus-card-grid, no flat white cards, nothing that reads like a resume PDF turned into a webpage. Depth comes from the void-to-glass relationship, not from card borders or drop shadows.",
+    "keyCharacteristics": [
+      "Near-black gradient depth (slate-900 → black) as the base plane, glass panels floating above it",
+      "Three narrow, purposeful accent roles — Signal Blue, Console Cyan, Online Emerald — never blended into a rainbow",
+      "Colored glow in place of hard black shadows",
+      "Full-round shapes for anything interactive (pills, avatars, the chat launcher); generous but not maximal rounding for panels",
+      "Motion that signals liveness (pulse, hover-scale) rather than choreography for its own sake"
+    ],
+    "rules": [
+      { "name": "The Three-Signal Rule", "body": "Only three accent colors exist: Signal Blue (action), Console Cyan (highlight), Online Emerald (status). A fourth accent hue is never introduced without retiring one of these.", "section": "colors" },
+      { "name": "The Glass-Border Rule", "body": "Panel borders are translucent white (rgba(255,255,255,0.1)), never a solid neutral gray — the border should read as light catching an edge, not a drawn line.", "section": "colors" },
+      { "name": "The One-Family Rule", "body": "Every text role uses the same system sans stack. A second family is never introduced for \"flavor\" — hierarchy is weight and size only.", "section": "typography" },
+      { "name": "The Colored-Glow Rule", "body": "When an element is meant to feel \"live\" (the chat launcher, the online status dot), its shadow is a tinted glow in the element's own accent color, never a neutral black shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep accent color to the three named roles (Signal Blue, Console Cyan, Online Emerald) — each with one job.",
+      "Do use colored glow instead of black drop shadows on anything meant to feel live or interactive.",
+      "Do use full-round shapes for every interactive, tappable element (buttons, avatars, chips, the chat launcher).",
+      "Do keep borders translucent white (rgba(255,255,255,0.1)), never solid gray.",
+      "Do let the system sans stack carry the whole hierarchy through weight and size alone."
+    ],
+    "donts": [
+      "Don't ship a generic templated-portfolio layout — no stock hero-plus-card-grid-of-projects that reads as bootcamp-issue.",
+      "Don't make it feel overly corporate or stiff — nothing that reads like a resume PDF reformatted as a webpage.",
+      "Don't introduce a fourth accent hue without retiring one of the existing three.",
+      "Don't use a second font family \"for flavor\" — one system sans stack, weight and size only.",
+      "Don't use Online Emerald for anything other than a live/available status signal — its rarity is what makes it legible.",
+      "Don't add hard black drop shadows to glass panels — depth comes from blur + translucent border + colored glow, not from shadow-black."
+    ]
+  }
+}

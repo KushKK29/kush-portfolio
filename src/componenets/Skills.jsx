@@ -61,7 +61,7 @@ const Skills = () => {
     <div className="py-20 bg-gradient-to-b from-slate-900 to-slate-800">
       <div className="mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl font-bold text-blue-400 mb-4">
             Technical Skills
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">

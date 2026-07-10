@@ -1,0 +1,51 @@
+<svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill:#1e293b; stroke:#3b82f6; stroke-width:1.5; }
+    .box2 { fill:#1e293b; stroke:#475569; stroke-width:1.5; }
+    .old { fill:#1e293b; stroke:#ef4444; stroke-width:1.5; stroke-dasharray:6 4; }
+    .t { fill:#e2e8f0; font-size:15px; font-weight:600; text-anchor:middle; }
+    .s { fill:#94a3b8; font-size:11.5px; text-anchor:middle; }
+    .l { fill:#94a3b8; font-size:11.5px; text-anchor:middle; }
+    .h { fill:#64748b; font-size:12px; font-weight:700; letter-spacing:1px; }
+    .e { stroke:#64748b; stroke-width:1.5; fill:none; marker-end:url(#arr); }
+  </style>
+
+  <text class="h" x="30" y="34">RECRUITER DASHBOARD</text>
+  <rect class="box" x="30" y="52" width="230" height="76" rx="10"/>
+  <text class="t" x="145" y="82">Next.js + Redux UI</text>
+  <text class="s" x="145" y="102">5+ composable filters · 200+ users</text>
+
+  <rect class="box" x="380" y="58" width="190" height="64" rx="10"/>
+  <text class="t" x="475" y="85">Django API</text>
+  <text class="s" x="475" y="105">indexed filter queries</text>
+  <line class="e" x1="260" y1="90" x2="376" y2="90"/>
+  <text class="l" x="318" y="80">search</text>
+
+  <rect class="box2" x="680" y="58" width="190" height="64" rx="10"/>
+  <text class="t" x="775" y="85">Candidate pool</text>
+  <text class="s" x="775" y="105">database</text>
+  <line class="e" x1="570" y1="90" x2="676" y2="90"/>
+
+  <text class="h" x="30" y="230">PHP → NEXT.JS MIGRATION</text>
+  <rect class="old" x="30" y="248" width="230" height="76" rx="10"/>
+  <text class="t" x="145" y="278">PHP monolith</text>
+  <text class="s" x="145" y="298">30+ legacy modules</text>
+
+  <rect class="box" x="380" y="248" width="230" height="76" rx="10"/>
+  <text class="t" x="495" y="278">Next.js modules</text>
+  <text class="s" x="495" y="298">migrated one at a time</text>
+  <line class="e" x1="260" y1="286" x2="376" y2="286"/>
+  <text class="l" x="318" y="276">incremental</text>
+
+  <rect class="box2" x="720" y="248" width="190" height="76" rx="10"/>
+  <text class="t" x="815" y="278">Same backend</text>
+  <text class="s" x="815" y="298">old &amp; new run side by side</text>
+  <line class="e" x1="610" y1="286" x2="716" y2="286"/>
+  <path class="e" d="M145,324 C200,370 640,370 780,328" stroke-dasharray="5 4"/>
+  <text class="l" x="470" y="382">fallback during cutover</text>
+</svg>

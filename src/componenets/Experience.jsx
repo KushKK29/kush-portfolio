@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
+import { Link } from "react-router-dom";
 
 const experience = [
   {
     title: "Software Engineer Intern",
     company: "Humantic AI",
     duration: "Jan. 2026 - Present",
+    caseStudy: "humantic-ai",
     details: [
       "Integrated the onBoarding flow for Agent PI and Agent Miia.",
       "Designed the Compatibilty section in the full profile menu.",
@@ -17,6 +19,7 @@ const experience = [
     title: "SDE Intern",
     company: "GeeksforGeeks",
     duration: "Oct. 2025 - January 2026",
+    caseStudy: "geeksforgeeks",
     details: [
       "Developed a Recruiter Dashboard serving 200+ active users, implementing 5+ advanced filters and reducing candidate search time by 40%.",
       "Migrated the complete internal organizational dashboard from PHP to Next.js, refactoring 30+ modules, improving page load performance by 50%, and reducing maintenance effort by 35%. ",
@@ -58,13 +61,13 @@ const Experience = () => {
           <span className="absolute bottom-0 left-0 w-0 h-[3px] rounded-md bg-blue-600 group-hover:w-full transition-all duration-300"></span>
         </span>
       </div>
-      <div className="relative border-l-4 border-blue-500 space-y-6">
+      <div className="relative border-l-4 border-white/10 space-y-6">
         {experience.map((exp, index) => (
           <div
             key={index}
             data-aos="fade-up" // Apply AOS fade-up animation
             data-aos-delay={`${index * 200}`} // Add a delay for staggered animation
-            className="relative bg-gray-800 p-6 rounded-lg shadow-lg border group border-gray-700 ml-8 hover:scale-110 hover:shadow-white hover:shadow-md"
+            className="relative bg-gray-800 p-6 rounded-lg shadow-lg border group border-white/10 ml-8 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20 transition-all"
           >
             <div className="absolute -left-4 top-6 w-8 h-8 bg-blue-500 rounded-full border-4 border-gray-900 group-hover:border-slate-300"></div>
             <div className="flex justify-between items-center mb-4">
@@ -79,6 +82,14 @@ const Experience = () => {
                 <li key={idx}>{detail}</li>
               ))}
             </ul>
+            {exp.caseStudy && (
+              <Link
+                to={`/work/${exp.caseStudy}`}
+                className="inline-block mt-4 text-blue-400 hover:text-blue-300 text-sm font-semibold"
+              >
+                Read the full case study →
+              </Link>
+            )}
           </div>
         ))}
       </div>

@@ -1,0 +1,61 @@
+<svg viewBox="0 0 1000 430" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill:#1e293b; stroke:#3b82f6; stroke-width:1.5; rx:10; }
+    .box2 { fill:#1e293b; stroke:#475569; stroke-width:1.5; rx:10; }
+    .t { fill:#e2e8f0; font-size:15px; font-weight:600; text-anchor:middle; }
+    .s { fill:#94a3b8; font-size:11.5px; text-anchor:middle; }
+    .l { fill:#94a3b8; font-size:11.5px; text-anchor:middle; }
+    .e { stroke:#64748b; stroke-width:1.5; fill:none; marker-end:url(#arr); }
+  </style>
+
+  <!-- top row -->
+  <rect class="box" x="30" y="40" width="200" height="64" rx="10"/>
+  <text class="t" x="130" y="67">Next.js 14 UI</text>
+  <text class="s" x="130" y="87">Tailwind · submit &amp; poll</text>
+
+  <rect class="box" x="330" y="40" width="200" height="64" rx="10"/>
+  <text class="t" x="430" y="67">FastAPI backend</text>
+  <text class="s" x="430" y="87">returns job id instantly</text>
+
+  <rect class="box" x="640" y="40" width="250" height="64" rx="10"/>
+  <text class="t" x="765" y="67">MongoDB</text>
+  <text class="s" x="765" y="87">data + jobs collection = queue</text>
+
+  <line class="e" x1="230" y1="72" x2="326" y2="72"/>
+  <text class="l" x="280" y="62">request article</text>
+  <line class="e" x1="530" y1="72" x2="636" y2="72"/>
+  <text class="l" x="583" y="62">enqueue job</text>
+
+  <!-- worker row -->
+  <rect class="box" x="330" y="250" width="200" height="64" rx="10"/>
+  <text class="t" x="430" y="277">Background worker</text>
+  <text class="s" x="430" y="297">claims pending jobs</text>
+
+  <path class="e" d="M740,104 C700,180 540,200 470,246"/>
+  <text class="l" x="640" y="180">pending → running → done</text>
+
+  <rect class="box2" x="30" y="250" width="200" height="64" rx="10"/>
+  <text class="t" x="130" y="277">DDGS web search</text>
+  <text class="s" x="130" y="297">real sources for grounding</text>
+  <line class="e" x1="326" y1="282" x2="234" y2="282"/>
+  <text class="l" x="280" y="272">ground claims</text>
+
+  <rect class="box" x="620" y="250" width="170" height="64" rx="10"/>
+  <text class="t" x="705" y="277">Bifrost</text>
+  <text class="s" x="705" y="297">LLM gateway + failover</text>
+  <line class="e" x1="530" y1="282" x2="616" y2="282"/>
+  <text class="l" x="573" y="272">generate</text>
+
+  <rect class="box2" x="850" y="210" width="130" height="52" rx="10"/>
+  <text class="t" x="915" y="241">Gemini</text>
+  <rect class="box2" x="850" y="302" width="130" height="52" rx="10"/>
+  <text class="t" x="915" y="326">Fallback</text>
+  <text class="s" x="915" y="344">provider</text>
+  <path class="e" d="M790,270 C815,262 825,248 846,238"/>
+  <path class="e" d="M790,294 C815,302 825,316 846,326"/>
+</svg>

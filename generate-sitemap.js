@@ -7,9 +7,10 @@ const siteUrl = 'https://kush-portfolio-virid.vercel.app';
 // list your pages here
 const links = [
   { url: '/', changefreq: 'monthly', priority: 1.0 },
-  { url: '/about', changefreq: 'monthly', priority: 0.8 },
-  { url: '/projects', changefreq: 'monthly', priority: 0.8 },
-  { url: '/contact', changefreq: 'monthly', priority: 0.7 },
+  { url: '/work/articleship', changefreq: 'monthly', priority: 0.8 },
+  { url: '/work/humantic-ai', changefreq: 'monthly', priority: 0.8 },
+  { url: '/work/geeksforgeeks', changefreq: 'monthly', priority: 0.8 },
+  { url: '/work/stock-analyser', changefreq: 'monthly', priority: 0.8 },
 ];
 
 const stream = new SitemapStream({ hostname: siteUrl });

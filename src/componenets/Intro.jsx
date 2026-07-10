@@ -4,11 +4,8 @@ import githubAnimation from "./Githubb.json"; // replace with your Lottie file p
 import linkedinAnimation from "./LinkedInn.json"; // replace with your Lottie file path
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
-import { Link } from "react-scroll"; // Import Link from react-scroll
-import { RiMenu2Fill } from "react-icons/ri"; // Import Menu Icon
-import Leetcode from "./leetcode.png";
+import Leetcode from "./l1.gif";
 import Codechef from "./codechef.png";
-import ScrollProgress from "./ScrollProgress";
 const Intro = () => {
   const defaultOptionsGitHub = {
     loop: true,
@@ -77,13 +74,6 @@ const Intro = () => {
     });
   };
 
-  // Header Component
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   const handleResumeClick = () => {
     // Replace with your resume URL
     const resumeUrl =
@@ -93,133 +83,6 @@ const Intro = () => {
 
   return (
     <div className="relative">
-      {/* Header */}
-      <div className="flex justify-center text-sm">
-        <div className="bg-white/10 backdrop-blur-md text-white fixed w-full rounded-lg shadow-inner px-8 py-4 z-50">
-          <ul className="hidden md:flex justify-center space-x-6">
-            <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2">
-              <Link to="intro" smooth={true} duration={500}>
-                Intro
-              </Link>
-            </li>
-            <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2">
-              <Link to="projects" smooth={true} duration={500}>
-                Projects
-              </Link>
-            </li>
-            <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2">
-              <Link to="skills" smooth={true} duration={500}>
-                Skills
-              </Link>
-            </li>
-            <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2">
-              <Link to="education" smooth={true} duration={500}>
-                Education
-              </Link>
-            </li>
-            <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2">
-              <Link to="experience" smooth={true} duration={500}>
-                Experience
-              </Link>
-            </li>
-            <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2">
-              <Link to="contact" smooth={true} duration={500}>
-                Contact
-              </Link>
-            </li>
-            <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2">
-              <Link to="about" smooth={true} duration={500}>
-                About
-              </Link>
-            </li>
-          </ul>
-
-          <div className="md:hidden flex justify-left items-center">
-            <button onClick={handleMenuToggle} className="text-white text-xl">
-              <RiMenu2Fill />
-            </button>
-
-            {/* Mobile Menu Links */}
-            {isMenuOpen && (
-              <div className="absolute top-16 left-2 w-auto max-w-xs bg-white/10 backdrop-blur-md text-white text-left py-4 rounded-md">
-                <ul>
-                  <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2 py-2">
-                    <Link
-                      to="intro"
-                      smooth={true}
-                      duration={500}
-                      onClick={handleMenuToggle}
-                    >
-                      Intro
-                    </Link>
-                  </li>
-                  <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2 py-2">
-                    <Link
-                      to="projects"
-                      smooth={true}
-                      duration={500}
-                      onClick={handleMenuToggle}
-                    >
-                      Projects
-                    </Link>
-                  </li>
-                  <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2 py-2">
-                    <Link
-                      to="skills"
-                      smooth={true}
-                      duration={500}
-                      onClick={handleMenuToggle}
-                    >
-                      Skills
-                    </Link>
-                  </li>
-                  <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2 py-2">
-                    <Link
-                      to="education"
-                      smooth={true}
-                      duration={500}
-                      onClick={handleMenuToggle}
-                    >
-                      Education
-                    </Link>
-                  </li>
-                  <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2 py-2">
-                    <Link
-                      to="experience"
-                      smooth={true}
-                      duration={500}
-                      onClick={handleMenuToggle}
-                    >
-                      Experience
-                    </Link>
-                  </li>
-                  <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2 py-2">
-                    <Link
-                      to="contact"
-                      smooth={true}
-                      duration={500}
-                      onClick={handleMenuToggle}
-                    >
-                      Contact
-                    </Link>
-                  </li>
-                  <li className="cursor-pointer hover:text-gray-900 hover:bg-gray-600 hover:rounded-md px-2 py-2">
-                    <Link
-                      to="about"
-                      smooth={true}
-                      duration={500}
-                      onClick={handleMenuToggle}
-                    >
-                      About
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <ScrollProgress />
       {/* Modified Intro Section */}
       <div className="min-h-screen flex items-center bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white p-4 md:p-8">
         <div className="max-w-6xl mx-auto w-full">
@@ -288,7 +151,7 @@ const Intro = () => {
                   rel="noopener noreferrer"
                   className="mt-3 w-8 h-8 hover:scale-110"
                 >
-                  <img src={Leetcode} className="h-8 w-8" alt="Leetcode" />
+                  <img src={Leetcode} className="h-8 w-8 scale-[1.9]" alt="Leetcode" />
                 </a>
                 <a
                   href="https://www.codechef.com/users/kush279"

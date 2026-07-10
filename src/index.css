@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* AOS animates on window scroll, which never fires inside the 3D overlay's
+   own scroll container — force AOS elements visible there. */
+.no-aos [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}

@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
+import { Link } from "react-router-dom";
+import { caseStudies } from "../content";
+
+const projectCaseStudies = caseStudies.filter((c) => c.type === "project");
 
 const services = [
   {
@@ -82,6 +86,29 @@ const Projects = () => {
               Projects
               <span className="absolute bottom-0 left-0 w-0 h-[3px] rounded-md bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </span>
+          </div>
+
+          {/* Deep-dive case studies */}
+          <div className="mx-auto w-full max-w-4xl grid gap-6 sm:grid-cols-2">
+            {projectCaseStudies.map((cs) => (
+              <Link
+                key={cs.slug}
+                to={`/work/${cs.slug}`}
+                data-aos="fade-up"
+                className="block bg-gray-800/70 border border-gray-700 rounded-xl p-6 hover:border-blue-500 hover:scale-[1.02] transition-all duration-300"
+              >
+                <p className="uppercase tracking-widest text-xs text-gray-500 mb-2">
+                  Case study
+                </p>
+                <h3 className="text-xl font-bold text-blue-400 mb-2">
+                  {cs.title}
+                </h3>
+                <p className="text-gray-300 text-sm mb-3">{cs.oneLiner}</p>
+                <span className="text-blue-400 text-sm font-semibold">
+                  Read the full story →
+                </span>
+              </Link>
+            ))}
           </div>
 
           <div className="mx-auto grid gap-12 space-y-10 md:space-y-0 sm:gap-16 lg:grid-cols-3">

@@ -82,7 +82,7 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold text-blue-400">
             Let's Connect
           </h1>
           <p className="text-lg mt-4 text-gray-300 max-w-2xl mx-auto">
@@ -181,8 +181,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-4 group">
-                  <div className="p-3 bg-teal-500/10 rounded-lg group-hover:bg-teal-500/20 transition-all">
-                    <MdOutlineEmail className="text-2xl text-teal-400" />
+                  <div className="p-3 bg-cyan-500/10 rounded-lg group-hover:bg-cyan-500/20 transition-all">
+                    <MdOutlineEmail className="text-2xl text-cyan-400" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email</p>
@@ -191,8 +191,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-4 group">
-                  <div className="p-3 bg-purple-500/10 rounded-lg group-hover:bg-purple-500/20 transition-all">
-                    <CiLocationOn className="text-2xl text-purple-400" />
+                  <div className="p-3 bg-emerald-500/10 rounded-lg group-hover:bg-emerald-500/20 transition-all">
+                    <CiLocationOn className="text-2xl text-emerald-400" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Location</p>
