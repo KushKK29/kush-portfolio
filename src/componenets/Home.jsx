@@ -79,8 +79,18 @@ const Home = () => {
   const modeToggle = canUse3D && (
     <button
       onClick={toggleMode}
-      className="fixed bottom-4 left-4 z-50 bg-white/10 backdrop-blur-md border border-gray-600 text-gray-200 text-xs px-3 py-2 rounded-full hover:bg-white/20"
+      className={`fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-white/10 backdrop-blur-md border text-xs px-3 py-2 rounded-full transition-colors ${
+        mode === "3d"
+          ? "border-gray-600 text-gray-200 hover:bg-white/20"
+          : "border-cyan-400/40 text-cyan-100 shadow-[0_0_16px_rgba(34,211,238,0.5)] hover:bg-white/20"
+      }`}
     >
+      {mode !== "3d" && (
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+        </span>
+      )}
       {mode === "3d" ? "Switch to classic view" : "Switch to 3D view"}
     </button>
   );
