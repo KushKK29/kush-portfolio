@@ -5,6 +5,9 @@ import { Billboard, Float, Html, RoundedBox, Stars, Text } from "@react-three/dr
 import * as THREE from "three";
 import { FiBookOpen, FiBriefcase, FiCpu, FiFolder, FiMail, FiUser } from "react-icons/fi";
 import { SECTIONS } from "./Header";
+import { skillCards } from "./Skills";
+import { experience } from "./Experience";
+import { education } from "./Education";
 
 const OVERVIEW_POS = new THREE.Vector3(0, 0, 13.5);
 const ORIGIN = new THREE.Vector3(0, 0, 0);
@@ -32,9 +35,10 @@ const PANELS = SECTIONS.map((s, i) => {
     ...s,
     position,
     rotationY: -x * 0.05, // angled slightly inward
+    // native3d showcases (dial, card cascades) need a wider shot than a panel
     cameraPos: position
       .clone()
-      .add(new THREE.Vector3(x * 0.06, 0.25, 4.3)),
+      .add(new THREE.Vector3(x * 0.06, 0.25, s.native3d ? 6.8 : 4.3)),
     accent: ACCENTS[i % ACCENTS.length],
     Icon: SECTION_ICONS[s.id],
   };
@@ -198,6 +202,130 @@ const Panel = ({ panel, focused, onFocus }) => {
   );
 };
 
+// ---------- native-3D section showcases ----------
+
+const DIAL_GRAY = new THREE.Color("#9ca3af");
+const DIAL_CYAN = new THREE.Color("#22d3ee");
+const SKILL_NAMES = skillCards.map((s) => s.name);
+
+// Rotating instrument dial: skill names ride a cylinder; whichever faces
+// the camera lights up Console Cyan and grows, like a tuned-in readout.
+const SkillsDial = ({ position }) => {
+  const ring = useRef();
+  const texts = useRef([]);
+  const tmp = useRef(new THREE.Color());
+  const n = SKILL_NAMES.length;
+  useFrame((_, delta) => {
+    if (!ring.current) return;
+    ring.current.rotation.y += delta * 0.35;
+    const rot = ring.current.rotation.y;
+    texts.current.forEach((t, i) => {
+      if (!t) return;
+      const a = (i / n) * Math.PI * 2;
+      const front = (Math.cos(a + rot) + 1) / 2; // 1 = facing the camera
+      const f = front ** 3;
+      t.scale.setScalar(0.85 + f * 0.55);
+      t.color = tmp.current.copy(DIAL_GRAY).lerp(DIAL_CYAN, f).getStyle();
+      // fade the far side out so its mirrored backs don't read as noise
+      t.fillOpacity = 0.08 + 0.92 * front ** 1.5;
+    });
+  });
+  return (
+    <group position={position}>
+      <Text position={[0, 1.7, 0]} fontSize={0.34} color="#f1f5f9">
+        Technical Skills
+      </Text>
+      <group ref={ring} rotation-x={-0.08}>
+        {SKILL_NAMES.map((name, i) => {
+          const a = (i / n) * Math.PI * 2;
+          return (
+            <Text
+              key={name}
+              ref={(el) => (texts.current[i] = el)}
+              position={[Math.sin(a) * 3.2, 0, Math.cos(a) * 3.2]}
+              rotation-y={a}
+              fontSize={0.28}
+              color="#9ca3af"
+            >
+              {name}
+            </Text>
+          );
+        })}
+        {[-0.9, 0.9].map((y) => (
+          <mesh key={y} position={[0, y, 0]} rotation-x={Math.PI / 2}>
+            <torusGeometry args={[3.2, 0.012, 8, 80]} />
+            <meshBasicMaterial color="#22d3ee" transparent opacity={0.3} />
+          </mesh>
+        ))}
+      </group>
+    </group>
+  );
+};
+
+// Glass cards receding into space — shared by Experience and Education.
+const CascadeCards = ({ position, title, items }) => (
+  <group position={position}>
+    <Text position={[0, 2.2, 0]} fontSize={0.34} color="#f1f5f9">
+      {title}
+    </Text>
+    {/* no Float here: cards hold still so their links are easy to click */}
+    {items.map((item, i) => (
+        <group
+          key={i}
+          position={[
+            i * 2.15 - ((items.length - 1) * 2.15) / 2,
+            0.95 - i * 0.55,
+            -i * 1.3,
+          ]}
+          rotation-y={-0.1}
+        >
+          <Html transform scale={0.42} style={{ pointerEvents: "auto" }}>
+            <div
+              className="cascade-card w-80 bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-left shadow-[0_30px_80px_rgba(0,0,0,0.45)]"
+              style={{ animationDelay: `${i * 120}ms`, minHeight: "280px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}
+            >
+              <div>
+                <p className="text-[11px] uppercase tracking-widest text-gray-500 mb-2">
+                  {item.duration}
+                </p>
+                <h3 className="text-white font-semibold text-lg leading-snug mb-2">
+                  {item.heading}
+                </h3>
+                <p className="text-cyan-300 text-sm mb-3">{item.subheading}</p>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {item.summary}
+                </p>
+              </div>
+              {item.caseStudy && (
+                <a
+                  href={`/work/${item.caseStudy}`}
+                  className="inline-block mt-3 text-blue-400 hover:text-blue-300 text-sm font-semibold"
+                >
+                  Read the full case study →
+                </a>
+              )}
+            </div>
+          </Html>
+        </group>
+    ))}
+  </group>
+);
+
+const EXPERIENCE_CARDS = experience.map((e) => ({
+  duration: e.duration,
+  heading: e.title,
+  subheading: e.company,
+  summary: e.details[0],
+  caseStudy: e.caseStudy,
+}));
+
+const EDUCATION_CARDS = education.map((e) => ({
+  duration: e.duration,
+  heading: e.degree,
+  subheading: e.institution,
+  summary: e.details[0],
+}));
+
 const CameraRig = ({ focus }) => {
   const look = useRef(new THREE.Vector3(0, 0, 0));
   const target = useRef(new THREE.Vector3());
@@ -244,9 +372,35 @@ const Scene3D = ({ focus, onFocus }) => (
       </Text>
     </Billboard>
 
-    {PANELS.map((p) => (
-      <Panel key={p.id} panel={p} focused={p.id === focus} onFocus={onFocus} />
-    ))}
+    {PANELS.map((p) =>
+      // native3d sections swap their panel for an in-scene showcase on focus
+      p.native3d && p.id === focus ? null : (
+        <Panel
+          key={p.id}
+          panel={p}
+          focused={p.id === focus}
+          onFocus={onFocus}
+        />
+      )
+    )}
+
+    {focus === "skills" && (
+      <SkillsDial position={PANELS.find((p) => p.id === "skills").position} />
+    )}
+    {focus === "experience" && (
+      <CascadeCards
+        position={PANELS.find((p) => p.id === "experience").position}
+        title="Experience"
+        items={EXPERIENCE_CARDS}
+      />
+    )}
+    {focus === "education" && (
+      <CascadeCards
+        position={PANELS.find((p) => p.id === "education").position}
+        title="Education"
+        items={EDUCATION_CARDS}
+      />
+    )}
 
     <CameraRig focus={focus} />
   </Canvas>

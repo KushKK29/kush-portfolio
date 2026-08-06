@@ -1,0 +1,66 @@
+<svg viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill:#1e293b; stroke:#3b82f6; stroke-width:1.5; }
+    .box2 { fill:#1e293b; stroke:#475569; stroke-width:1.5; }
+    .live { fill:#1e293b; stroke:#22d3ee; stroke-width:1.5; }
+    .t { fill:#e2e8f0; font-size:15px; font-weight:600; text-anchor:middle; }
+    .s { fill:#94a3b8; font-size:11.5px; text-anchor:middle; }
+    .l { fill:#94a3b8; font-size:11.5px; text-anchor:middle; }
+    .lc { fill:#22d3ee; font-size:11.5px; text-anchor:middle; }
+    .e { stroke:#64748b; stroke-width:1.5; fill:none; marker-end:url(#arr); }
+    .ec { stroke:#22d3ee; stroke-width:1.5; fill:none; marker-end:url(#arrc); }
+  </style>
+
+  <!-- client -->
+  <rect class="box" x="30" y="70" width="210" height="80" rx="12"/>
+  <text class="t" x="135" y="100">React + TS client</text>
+  <text class="s" x="135" y="122">charts · orders · portfolio</text>
+
+  <!-- server -->
+  <rect class="box" x="370" y="40" width="280" height="150" rx="12"/>
+  <text class="t" x="510" y="68">Node / Express server</text>
+  <text class="s" x="510" y="92">Socket.IO fan-out (per-client feed map)</text>
+  <text class="s" x="510" y="112">order engine · balance · avg-price · shorts</text>
+  <text class="s" x="510" y="132">node-schedule: 9:15 / 15:30 IST market status</text>
+  <text class="s" x="510" y="152">7-day historical fallback when no candles</text>
+  <text class="s" x="510" y="172">self-ping keep-alive (Render free tier)</text>
+
+  <line class="ec" x1="240" y1="98" x2="366" y2="98"/>
+  <text class="lc" x="303" y="88">Socket.IO · live ticks</text>
+  <line class="e" x1="240" y1="130" x2="366" y2="130"/>
+  <text class="l" x="303" y="146">REST · orders / auth</text>
+
+  <!-- upstox -->
+  <rect class="live" x="770" y="52" width="200" height="86" rx="12"/>
+  <text class="t" x="870" y="82">Upstox feed</text>
+  <text class="s" x="870" y="104">raw WebSocket · protobuf</text>
+  <text class="s" x="870" y="122">MarketDataFeed.proto</text>
+  <line class="ec" x1="650" y1="95" x2="766" y2="95"/>
+  <text class="lc" x="708" y="85">decode binary frames</text>
+
+  <!-- mongo -->
+  <rect class="box2" x="370" y="300" width="280" height="70" rx="12"/>
+  <text class="t" x="510" y="330">MongoDB</text>
+  <text class="s" x="510" y="352">users · orders · portfolios (holdings + trade_type)</text>
+  <line class="e" x1="510" y1="190" x2="510" y2="296"/>
+
+  <!-- python sentiment -->
+  <rect class="box2" x="30" y="300" width="240" height="70" rx="12"/>
+  <text class="t" x="150" y="330">Python sentiment</text>
+  <text class="s" x="150" y="352">news → buy/sell signals</text>
+  <path class="e" d="M270,320 C320,300 340,230 396,196" stroke-dasharray="5 4"/>
+
+  <!-- scheduler note -->
+  <rect class="box2" x="770" y="300" width="200" height="70" rx="12"/>
+  <text class="t" x="870" y="330">NSE hours</text>
+  <text class="s" x="870" y="352">open 9:15 · close 15:30 IST</text>
+  <path class="e" d="M770,320 C720,300 700,230 654,196" stroke-dasharray="5 4"/>
+</svg>

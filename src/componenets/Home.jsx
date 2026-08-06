@@ -103,7 +103,10 @@ const Home = () => {
       </>
     );
 
-  const Focused = focus ? SECTION_COMPONENTS[focus] : null;
+  // native3d sections render inside the canvas (dial / card cascades),
+  // so they get a close button instead of the DOM overlay
+  const isNative3D = SECTIONS.find((s) => s.id === focus)?.native3d;
+  const Focused = focus && !isNative3D ? SECTION_COMPONENTS[focus] : null;
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -120,6 +123,15 @@ const Home = () => {
         <p className="absolute bottom-6 w-full text-center text-gray-400 text-sm pointer-events-none">
           Click a panel — or use the menu — to fly to a section
         </p>
+      )}
+
+      {focus && isNative3D && (
+        <button
+          onClick={() => setFocus(null)}
+          className="absolute top-20 right-6 z-40 bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 text-white text-sm px-4 py-2 rounded-full"
+        >
+          ✕ Close (Esc)
+        </button>
       )}
 
       <AnimatePresence>

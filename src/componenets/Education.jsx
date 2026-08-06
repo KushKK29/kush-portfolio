@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
 
-const education = [
+// exported for the 3D education cards in Scene3D
+export const education = [
   {
     degree: "B.Tech in ECE",
     institution: "Indian Institute of Information Technology, Una",

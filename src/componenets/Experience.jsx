@@ -3,7 +3,8 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
 import { Link } from "react-router-dom";
 
-const experience = [
+// exported for the 3D experience cards in Scene3D
+export const experience = [
   {
     title: "Software Engineer Intern",
     company: "Humantic AI",

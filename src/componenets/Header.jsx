@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { RiMenu2Fill } from "react-icons/ri";
 
+// native3d sections render as in-scene 3D showcases instead of a DOM overlay
 export const SECTIONS = [
   { id: "intro", label: "Intro" },
-  { id: "skills", label: "Skills" },
+  { id: "skills", label: "Skills", native3d: true },
   { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
-  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education", native3d: true },
+  { id: "experience", label: "Experience", native3d: true },
   { id: "contact", label: "Contact" },
 ];
 

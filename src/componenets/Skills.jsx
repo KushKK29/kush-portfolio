@@ -14,6 +14,21 @@ import { FaCuttlefish } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa";
 
+// exported for the 3D skills dial in Scene3D
+export const skillCards = [
+  { icon: FaHtml5, name: "HTML", color: "text-orange-500" },
+  { icon: FaCss3Alt, name: "CSS", color: "text-blue-500" },
+  { icon: TbBrandJavascript, name: "JavaScript", color: "text-yellow-400" },
+  { icon: SiExpress, name: "Express.js", color: "text-green-400" },
+  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+  { icon: SiMongodb, name: "MongoDB", color: "text-green-600" },
+  { icon: FaCuttlefish, name: "C", color: "text-blue-400" },
+  { icon: TbBrandCpp, name: "C++", color: "text-blue-600" },
+  { icon: SiPython, name: "Python", color: "text-yellow-500" },
+  { icon: FaDatabase, name: "DSA", color: "text-purple-500" },
+  { icon: SiGithub, name: "GitHub", color: "text-gray-400" },
+];
+
 const Skills = () => {
   // Slider settings
   const settings = {
@@ -42,20 +57,6 @@ const Skills = () => {
       },
     ],
   };
-
-  const skillCards = [
-    { icon: FaHtml5, name: "HTML", color: "text-orange-500" },
-    { icon: FaCss3Alt, name: "CSS", color: "text-blue-500" },
-    { icon: TbBrandJavascript, name: "JavaScript", color: "text-yellow-400" },
-    { icon: SiExpress, name: "Express.js", color: "text-green-400" },
-    { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
-    { icon: SiMongodb, name: "MongoDB", color: "text-green-600" },
-    { icon: FaCuttlefish, name: "C", color: "text-blue-400" },
-    { icon: TbBrandCpp, name: "C++", color: "text-blue-600" },
-    { icon: SiPython, name: "Python", color: "text-yellow-500" },
-    { icon: FaDatabase, name: "DSA", color: "text-purple-500" },
-    { icon: SiGithub, name: "GitHub", color: "text-gray-400" },
-  ];
 
   return (
     <div className="py-20 bg-gradient-to-b from-slate-900 to-slate-800">

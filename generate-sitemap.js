@@ -11,6 +11,7 @@ const links = [
   { url: '/work/humantic-ai', changefreq: 'monthly', priority: 0.8 },
   { url: '/work/geeksforgeeks', changefreq: 'monthly', priority: 0.8 },
   { url: '/work/stock-analyser', changefreq: 'monthly', priority: 0.8 },
+  { url: '/work/trade-shala', changefreq: 'monthly', priority: 0.8 },
 ];
 
 const stream = new SitemapStream({ hostname: siteUrl });
