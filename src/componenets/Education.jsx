@@ -9,7 +9,7 @@ export const education = [
     institution: "Indian Institute of Information Technology, Una",
     duration: "2022 - 2026",
     details: [
-      "Current CGPA: 9.03",
+      "Current CGPA: 9.15",
       "Relevant coursework: Embedded Systems, Digital Design, Machine Learning",
     ],
   },

@@ -174,18 +174,18 @@ function buildLocalFallbackResponse(query) {
     };
   }
 
-  if (/e-commerce|ecommerce/.test(text)) {
+  /* if (/e-commerce|ecommerce/.test(text)) {
     return {
       text:
         "The E-commerce Website is one of my earlier React projects and shows the foundation of my frontend work.",
       sources: ["projects"],
     };
-  }
+  } */
 
   if (/project|portfolio|built/.test(text)) {
     return {
       text:
-        "I’ve built projects like Trade-Shala, MHope, My-Chat-App, Sorting-Visualizer, . If you want, I can summarize the stack or highlight the most relevant one.",
+        "I’ve built projects like Trade-Shala, MHope, an Autopay Recovery Voice Agent, and a Freshdesk MCP Connector. If you want, I can summarize the stack or highlight the most relevant one.",
       sources: ["projects"],
     };
   }
@@ -198,10 +198,10 @@ function buildLocalFallbackResponse(query) {
     };
   }
 
-  if (/experience|intern|job|work|humantic|mcp|oauth|salesforce|grafana/.test(text)) {
+  if (/experience|intern|job|work|humantic|mcp|oauth|salesforce|grafana|extension|hubspot|zoho|agent sdk|agents sdk|miia/.test(text)) {
     return {
       text:
-        "I'm a Software Engineer Intern at Humantic AI, owning backend-to-frontend delivery across 8 repos: onboarding flows for two AI agents, a full auth surface (OTP, OAuth 2.1, Salesforce), a complete MCP tool line, a Grafana/Loki observability stack, and a DB-backed fraud-prevention layer. Also SDE Intern at GeeksforGeeks, migrating dashboards to Next.js — cut load time 60%.",
+        "I'm a Software Engineer Intern at Humantic AI, owning backend-to-frontend delivery across 15 repos: onboarding flows for two AI agents, a full auth surface (OTP, OAuth 2.1, Salesforce), a complete MCP tool line, a Grafana/Loki observability stack, a DB-backed fraud-prevention layer, CRM integrations (Salesforce/HubSpot/Zoho) in the browser extension, and an original proof-of-concept rebuilding the report pipeline on the OpenAI Agents SDK. Also SDE Intern at GeeksforGeeks, migrating dashboards to Next.js — cut load time 60%.",
       sources: ["experience"],
     };
   }

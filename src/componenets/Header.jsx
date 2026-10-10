@@ -7,8 +7,8 @@ export const SECTIONS = [
   { id: "intro", label: "Intro" },
   { id: "skills", label: "Skills", native3d: true },
   { id: "projects", label: "Projects" },
-  { id: "education", label: "Education", native3d: true },
   { id: "experience", label: "Experience", native3d: true },
+  { id: "education", label: "Education", native3d: true },
   { id: "contact", label: "Contact" },
 ];
 

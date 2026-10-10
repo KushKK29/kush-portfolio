@@ -62,14 +62,14 @@ const services = [
       "https://github.com/KushKK29/react-peoject-2/tree/main/vite-project",
     liveDemo: "https://kushkk29.github.io/AI-Image-Generator/",
   },
-  {
+  /* {
     name: "E-commerce Website",
     description: "This is my first project related to React.js.",
     videoUrl:
       "https://res.cloudinary.com/dtkjjaxwn/video/upload/v1750581886/prm375pouizdzdq3skyr.mp4", // Add the video URL here
     githubRepo: "https://github.com/KushKK29/E-Commerce_Website",
     liveDemo: "https://kushkk29.github.io/E-Commerce_Website/",
-  },
+  }, */
 ];
 
 const Projects = () => {
@@ -84,29 +84,52 @@ const Projects = () => {
           <div className="flex justify-center font-bold text-3xl relative my-5">
             <span className="relative group hover:scale-110">
               Projects
-              <span className="absolute bottom-0 left-0 w-0 h-[3px] rounded-md bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-[3px] rounded-md bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)] group-hover:w-full transition-all duration-300"></span>
             </span>
           </div>
 
           {/* Deep-dive case studies */}
-          <div className="mx-auto w-full max-w-4xl grid gap-6 sm:grid-cols-2">
-            {projectCaseStudies.map((cs) => (
+          <div className="mx-auto w-full max-w-5xl grid gap-5 sm:grid-cols-2">
+            {projectCaseStudies.map((cs, i) => (
               <Link
                 key={cs.slug}
                 to={`/work/${cs.slug}`}
                 data-aos="fade-up"
-                className="block bg-gray-800/70 border border-gray-700 rounded-xl p-6 hover:border-blue-500 hover:scale-[1.02] transition-all duration-300"
+                data-aos-delay={`${(i % 2) * 100}`}
+                className={`group relative flex flex-col justify-between bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)] transition-all duration-300 ${
+                  i === 0 ? "sm:col-span-2" : ""
+                }`}
               >
-                <p className="uppercase tracking-widest text-xs text-gray-500 mb-2">
-                  Case study
-                </p>
-                <h3 className="text-xl font-bold text-blue-400 mb-2">
-                  {cs.title}
-                </h3>
-                <p className="text-gray-300 text-sm mb-3">{cs.oneLiner}</p>
-                <span className="text-blue-400 text-sm font-semibold">
-                  Read the full story →
-                </span>
+                <div>
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <h3
+                      className={`font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug ${
+                        i === 0 ? "text-2xl" : "text-lg"
+                      }`}
+                    >
+                      {cs.title}
+                    </h3>
+                    <span className="shrink-0 text-gray-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all duration-300">
+                      →
+                    </span>
+                  </div>
+                  <p className="font-mono text-[11px] text-gray-500 mb-3">
+                    {cs.role} · {cs.timeframe}
+                  </p>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4">{cs.oneLiner}</p>
+                </div>
+                {cs.stack?.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-auto pt-1">
+                    {cs.stack.slice(0, i === 0 ? 6 : 4).map((t) => (
+                      <span
+                        key={t}
+                        className="text-[11px] text-gray-500 px-2 py-0.5 border border-white/10 rounded-full"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </Link>
             ))}
           </div>

@@ -4,7 +4,7 @@ const portfolioSections = [
     title: "Intro",
     anchor: "#intro",
     summary:
-      "Kush Goel is a full-stack developer and B.Tech ECE student at IIIT Una (CGPA: 9.03), focused on building systems, not just features. He cares about speed, scale, and impact. He ships production-ready features fast, measures metrics, and iterates.",
+      "Kush Goel is a full-stack developer and B.Tech ECE student at IIIT Una (CGPA: 9.15), focused on building systems, not just features. He cares about speed, scale, and impact. He ships production-ready features fast, measures metrics, and iterates.",
     keywords: [
       "kush",
       "kush goel",
@@ -24,7 +24,7 @@ const portfolioSections = [
     title: "Projects",
     anchor: "#projects",
     summary:
-      "Projects include Trade-Shala (trading platform for 66K+ stocks, 82% ML prediction accuracy, 10% engagement increase) and MHope (healthcare system with AI chatbot and disease prediction at 85% precision, processed 500+ X-rays). He focuses on taking ideas through architecture to deployment.",
+      "Projects include Trade-Shala (trading platform for 66K+ stocks, 82% ML prediction accuracy, 10% engagement increase), MHope (healthcare system with AI chatbot and disease prediction at 85% precision, processed 500+ X-rays), an Autopay Recovery Voice Agent (live callable Vapi + FastAPI agent that verifies identity server-side before stating any account detail, never fabricates), and a Freshdesk MCP Connector (MCP server with a self-hosted OAuth 2.1 authorization server — Dynamic Client Registration, PKCE, rotating refresh tokens — for giving AI agents read-only Freshdesk access). He focuses on taking ideas through architecture to deployment.",
     keywords: [
       "project",
       "portfolio",
@@ -37,6 +37,12 @@ const portfolioSections = [
       "ml",
       "ai",
       "prediction",
+      "voice agent",
+      "autopay",
+      "vapi",
+      "freshdesk",
+      "mcp connector",
+      "oauth",
     ],
   },
   {
@@ -111,7 +117,7 @@ const portfolioSections = [
     title: "Education",
     anchor: "#education",
     summary:
-      "Education includes B.Tech in ECE at IIIT Una (Nov 2022 - May 2026, 9.03 CGPA), 12th with 95.6% (PCM), and 10th with 87% from R.R.K. Sen. Sec. School, Chandausi.",
+      "Education includes B.Tech in ECE at IIIT Una (Nov 2022 - May 2026, 9.15 CGPA), 12th with 95.6% (PCM), and 10th with 87% from R.R.K. Sen. Sec. School, Chandausi.",
     keywords: ["education", "study", "college", "iiit una", "school", "degree", "b.tech", "ece", "cgpa"],
   },
   {
@@ -165,19 +171,38 @@ const projects = [
     github: "https://github.com/KushKK29/react-peoject-2/tree/main/vite-project",
     live: "https://kushkk29.github.io/AI-Image-Generator/"
   },
-  {
+  /* {
     name: "E-commerce Website",
     description: "Foundational React.js e-commerce shopping platform.",
     tech: ["React.js"],
     metrics: ["frontend shopping cart"],
     github: "https://github.com/KushKK29/E-Commerce_Website",
     live: "https://kushkk29.github.io/E-Commerce_Website/"
+  }, */
+  {
+    name: "Autopay Recovery Voice Agent",
+    description: "A live, callable voice agent (Vapi + Python/FastAPI) that runs the autopay-failure recovery call: identity check, real failure reason, retry or SMS payment link.",
+    tech: ["Vapi", "Python", "FastAPI", "Vercel", "Twilio"],
+    metrics: ["live inbound calling", "server-side identity verification before any detail is spoken"],
+    github: null,
+    live: "tel:+14153009362"
+  },
+  {
+    name: "Freshdesk MCP Connector",
+    description: "An MCP server giving AI agents read-only access to Freshdesk tickets, with a self-hosted OAuth 2.1 authorization server (DCR, PKCE, rotating refresh tokens) for multi-tenant use.",
+    tech: ["Python", "MCP", "OAuth 2.1", "MongoDB", "Vercel"],
+    metrics: ["RFC 7591 Dynamic Client Registration", "RFC 8414 discovery metadata", "strictly read-only"],
+    github: null,
+    live: "https://fresh-desk-mcp.vercel.app"
   }
 ];
 
-const projectDetails = projects.map(p => 
-  `**${p.name}** → ${p.description} Tech: ${p.tech.join(", ")}. Impact: ${p.metrics.join(", ")}. [Live](${p.live}) | [GitHub](${p.github})`
-).join("\n\n");
+const projectDetails = projects.map(p => {
+  const links = [p.live ? `[Live](${p.live})` : null, p.github ? `[GitHub](${p.github})` : null]
+    .filter(Boolean)
+    .join(" | ");
+  return `**${p.name}** → ${p.description} Tech: ${p.tech.join(", ")}. Impact: ${p.metrics.join(", ")}. ${links}`;
+}).join("\n\n");
 
 export function tokenize(text) {
   return text.toLowerCase().match(/[a-z0-9]+/g) ?? [];
@@ -242,11 +267,11 @@ export function searchPortfolio(query, limit = 3) {
 
     // Semantic/Intent-Based Dynamic Weighting
     const qLower = query.toLowerCase();
-    if (section.id === "projects" && /trade|shala|mhope|chat|sorting|image|e-commerce|project|build|built|create|app|platform/.test(qLower)) {
+    if (section.id === "projects" && /trade|shala|mhope|chat|sorting|image|e-commerce|project|build|built|create|app|platform|voice agent|autopay|vapi|freshdesk|mcp connector/.test(qLower)) {
       score += 8;
     }
 
-    if (section.id === "experience" && /intern|work|company|job|humantic|geeksforgeeks|gfg|mcp|oauth|salesforce|grafana|observability|onboarding|fraud/.test(qLower)) {
+    if (section.id === "experience" && /intern|work|company|job|humantic|geeksforgeeks|gfg|mcp|oauth|salesforce|grafana|observability|onboarding|fraud|extension|hubspot|zoho|outlook|agent sdk|agents sdk|openai|miia|deepseek|kimi|qwen/.test(qLower)) {
       score += 8;
     }
 
@@ -351,16 +376,16 @@ export function buildFallbackAnswer(query) {
     return { text: "The AI Image Generator creates images from prompts using a machine learning workflow.", sources: [portfolioSections[1]] };
   }
 
-  if (/e-commerce|ecommerce/.test(lower)) {
+  /* if (/e-commerce|ecommerce/.test(lower)) {
     return { text: "The E-commerce Website is one of my earlier React projects and shows the foundation of my frontend work.", sources: [portfolioSections[1]] };
-  }
+  } */
 
   if (/skill|stack|tech|technology|language|frontend|backend/.test(lower)) {
     return { text: "My core stack includes HTML, CSS, JavaScript, React, Node.js, Express.js, MongoDB, Python, C, C++, DSA, and GitHub. I also use Tailwind, React Slick, EmailJS, and other frontend tools in this portfolio.", sources: [portfolioSections[2]] };
   }
 
-  if (/experience|intern|job|work|humantic|mcp|oauth|salesforce|grafana/.test(lower)) {
-    return { text: "I'm a Software Engineer Intern at Humantic AI, owning backend-to-frontend delivery across 8 repos: onboarding flows for two AI agents, a full auth surface (OTP, OAuth 2.1, Salesforce), a complete MCP tool line, a Grafana/Loki observability stack, and a DB-backed fraud-prevention layer. Also SDE Intern at GeeksforGeeks, migrating dashboards to Next.js — cut load time 60%.", sources: [portfolioSections[3]] };
+  if (/experience|intern|job|work|humantic|mcp|oauth|salesforce|grafana|extension|hubspot|zoho|agent sdk|agents sdk|miia/.test(lower)) {
+    return { text: "I'm a Software Engineer Intern at Humantic AI, owning backend-to-frontend delivery across 15 repos: onboarding flows for two AI agents, a full auth surface (OTP, OAuth 2.1, Salesforce), a complete MCP tool line, a Grafana/Loki observability stack, a DB-backed fraud-prevention layer, CRM integrations (Salesforce/HubSpot/Zoho) in the browser extension, and an original proof-of-concept rebuilding the report pipeline on the OpenAI Agents SDK. Also SDE Intern at GeeksforGeeks, migrating dashboards to Next.js — cut load time 60%.", sources: [portfolioSections[3]] };
   }
 
   if (/education|study|college|degree|school|iiit/.test(lower)) {

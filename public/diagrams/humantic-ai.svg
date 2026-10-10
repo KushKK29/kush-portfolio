@@ -50,7 +50,7 @@
   <line class="e" x1="570" y1="292" x2="666" y2="292"/>
 
   <rect class="box2" x="30" y="260" width="230" height="64" rx="10"/>
-  <text class="t" x="145" y="287">Claude Agent SDK POC</text>
+  <text class="t" x="145" y="287">OpenAI Agents SDK POC</text>
   <text class="s" x="145" y="307">agent-loop prototype</text>
   <path class="e" d="M262,278 C310,260 330,180 396,140" stroke-dasharray="5 4"/>
 </svg>

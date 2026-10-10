@@ -9,47 +9,46 @@ export default {
   role: "Founder / Full-stack",
   timeframe: "2025 – Present",
   oneLiner:
-    "AI-powered article generation SaaS with an async job queue and multi-provider LLM failover.",
+    "A full-stack AI article platform: MongoDB-backed job queue, 4-provider LLM failover, batch generation, and Stripe billing.",
   stack: [
     "FastAPI",
     "MongoDB",
     "Next.js 14",
-    "Tailwind",
     "Gemini",
-    "Bifrost",
-    "Render",
+    "OpenRouter",
+    "python-jose",
+    "Stripe",
   ],
   sections: [
     {
       type: "problem",
       content:
-        "Long-form article generation with LLMs breaks in a naive implementation: a single generation takes 60–120 seconds, which blows past HTTP timeout budgets; relying on one provider means one outage or rate-limit kills the product; and models happily fabricate statistics when asked to write authoritative content. ArticleShip needed to produce publish-ready, sourced articles reliably enough to charge for.",
+        "Long-form article generation with LLMs breaks in a naive implementation: a single generation takes long enough to blow past HTTP timeout budgets, relying on one provider means one rate-limit or outage kills the product, and a crashed worker mid-job silently loses that job forever. ArticleShip needed a pipeline that survives restarts, survives provider outages, and still lets someone submit 20 topics at once and walk away.",
     },
     {
       type: "architecture",
       diagram: "/diagrams/articleship.svg",
       content:
-        "The Next.js 14 frontend submits a generation request to the FastAPI backend, which writes a job document into MongoDB and returns immediately — MongoDB doubles as the job queue, so there is no Redis or Celery to operate. A background worker claims pending jobs, runs DDGS web search to ground the article in real sources, and calls the LLM through Bifrost, a gateway that routes to Gemini first and fails over to backup providers automatically. The frontend polls job status until the article is ready.",
+        "The Next.js 14 frontend talks to a FastAPI backend across five API areas — auth, generation (keyword/outline/article), jobs and batches, an article CMS, and billing. A generation request becomes a job document in MongoDB, which doubles as the job queue. A separate worker process claims jobs atomically with find_one_and_update (so two workers can't grab the same job), runs the pipeline — keyword research via live web search, outline, section drafting, structured mapping, image placement, HTML conversion — and calls the LLM through a 4-provider failover chain.",
     },
     {
       type: "decisions",
       items: [
         {
-          decision:
-            "Switched from synchronous generation to an async MongoDB-backed job queue",
-          why: "Generation regularly exceeded HTTP timeout budgets, so requests died mid-flight. A jobs collection with status transitions (pending → running → done/failed) made generation survivable across timeouts and server restarts — and since MongoDB was already the primary datastore, it cost zero new infrastructure.",
+          decision: "Built the job queue on MongoDB instead of adding Redis or Celery",
+          why: "MongoDB was already the primary datastore. A jobs collection with atomic find_one_and_update claims gets queue semantics — no double-processing, no new infrastructure to operate.",
         },
         {
-          decision: "Routed all LLM calls through Bifrost instead of calling Gemini directly",
-          why: "A single provider is a single point of failure. Bifrost gives multi-provider failover and unified request logging without scattering retry logic through application code.",
+          decision: "Chained four LLM providers instead of calling Gemini directly",
+          why: "Primary is Gemini 3 Flash; it fails over to OpenRouter, then NVIDIA NIM (Kimi k2.6), then Qwen. Rate-limit (429) and overload (503) errors trigger retry with linear backoff before falling to the next provider — a single provider's bad day doesn't take the product down.",
         },
         {
-          decision: "Skipped Postgres on the Bifrost deploy",
-          why: "Render's free-tier Postgres expires after 30 days, which would have silently killed the gateway a month in. File-based config avoided a dependency with a built-in death clock.",
+          decision: "Reclaim jobs stuck in processing for over 20 minutes, capped at 2 attempts",
+          why: "A worker can crash or hang mid-job. Treating anything stuck past 20 minutes as stale and letting another worker reclaim it (up to 2 tries) means a dead process loses time, not the job.",
         },
         {
-          decision: "Grounded generation with DDGS web search before writing",
-          why: "Retrieval-first generation lets the prompt demand claims backed by the fetched sources, which is the structural fix for fabricated statistics — prompt-only 'don't make things up' instructions were not enough.",
+          decision: "Doubled the token limit on truncated output instead of just retrying",
+          why: "A truncated JSON response isn't a transient failure to retry blind — it's a budget problem. Detecting truncation and retrying with double max_output_tokens fixes the actual cause instead of hoping a retry gets lucky.",
         },
       ],
     },
@@ -57,24 +56,16 @@ export default {
       type: "challenges",
       items: [
         {
-          problem: "Generated articles contained fabricated statistics presented as fact",
-          fix: "Moved to retrieval-grounded generation: DDGS search results are injected into the prompt and the model is constrained to only cite numbers present in the sources. Unsourced numeric claims are stripped in a validation pass.",
+          problem: "Batch jobs needed to submit up to 20 topics without hammering providers or finishing all at once",
+          fix: "Added optional stagger_minutes to space execution out over time, plus scheduled_at to delay a batch to a future time — so a batch of 20 doesn't fire as 20 simultaneous LLM calls.",
         },
         {
-          problem: "Long articles came back as truncated, unparseable JSON",
-          fix: "Root cause was a missing max_output_tokens on the provider call — the default budget cut the response mid-object. Set an explicit token budget sized to the article schema and added a parse step that detects truncation instead of failing opaquely.",
+          problem: "No visibility into what a job actually cost to run",
+          fix: "Each job logs LLM call counts and image-generation metrics into a job_cost record, so cost is attributable per job instead of inferred from a monthly provider bill.",
         },
         {
-          problem: "The DDGS search fallback path silently returned no results",
-          fix: "The fallback branch was swallowing exceptions and returning an empty list, so articles were generated ungrounded without any signal. Fixed the fallback to propagate failure into the job record so a grounding failure is visible, not silent.",
-        },
-        {
-          problem: "Worker crashed with a NameError under a rarely-hit branch",
-          fix: "A variable was defined inside one conditional branch but referenced after the conditional — classic scoping bug that only fired on the uncommon path. Hoisted the definition and added a regression test for that branch.",
-        },
-        {
-          problem: "Articles overshot the requested outline with extra headings",
-          fix: "The model kept inventing sections beyond the outline. Fixed by hard-capping headings against the outline in post-processing and trimming overflow instead of trusting the prompt alone.",
+          problem: "Email-based signup needed to be secure without adding a password-reset support burden",
+          fix: "Signup sends an email OTP; verify-otp exchanges the code for a JWT access token (python-jose), and login sets a refresh cookie separately. Passwords are hashed with bcrypt — no plaintext, no SMS dependency.",
         },
       ],
     },
@@ -82,13 +73,14 @@ export default {
       type: "evidence",
       items: [
         { label: "Architecture diagram", asset: "/diagrams/articleship.svg" },
-        { label: "Repo (private — request access)", url: null },
+        { label: "Live", url: "https://article-ai-murex.vercel.app/" },
+        { label: "GitHub", url: "https://github.com/KushKK29/Article.ai" },
       ],
     },
     {
       type: "outcome",
       content:
-        "An end-to-end async pipeline where jobs survive restarts and timeouts, generation keeps working through provider outages via Bifrost failover, and articles cite real fetched sources instead of invented statistics. The debugging trail — silent fallbacks, token budgets, scoping bugs — is exactly the operational surface a real LLM product lives on.",
+        "An end-to-end pipeline where jobs survive worker crashes and restarts via the 20-minute stale-reclaim, generation keeps working through provider outages across a 4-deep failover chain, and batch submissions of up to 20 topics run staggered or scheduled instead of all at once. Billing is wired through Stripe, auth through OTP + JWT, and every job's LLM and image cost is tracked individually.",
     },
   ],
 };

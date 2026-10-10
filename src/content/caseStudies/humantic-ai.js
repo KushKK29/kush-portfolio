@@ -89,6 +89,7 @@ export default {
           range: "Jan 2026",
           title: "Backend Foundations",
           repos: "humantic_apis",
+          impact: "medium",
           insight: "First owned backend-wide flows end to end, not just bugfixes.",
           tasks: [
             ["01-22", "GDPR email threshold", "Outbound-send threshold was too low; raised it so legitimate volume wasn't throttled."],
@@ -100,6 +101,7 @@ export default {
           range: "Feb–Apr",
           title: "Signup / Onboarding Hardening",
           repos: "humantic_apis · app-dashboard · humantic-website",
+          impact: "high",
           insight: "Same fix landing across backend + 2 frontends — learned to trace one root cause through every surface it touches.",
           tasks: [
             ["03-05/06", "iCloud domain block", "Disposable-feeling iCloud addresses abusing free-tier limits; blocked at signup/validation layer (mirrored in 3 repos)."],
@@ -112,6 +114,7 @@ export default {
           range: "Mar–Apr",
           title: "Notifications & Observability — Round 1",
           repos: "humantic_apis · agents",
+          impact: "medium",
           insight: "Moved from 'fix the bug' to 'make the system observable so bugs surface on their own.'",
           tasks: [
             ["03-25 → 04-06", "Prospect activity Slack channel", "No visibility into prospect activity; added dedicated channel, extended to public-website-sourced activity."],
@@ -123,6 +126,7 @@ export default {
           range: "May–Jul",
           title: "Cross-Repo UI Features",
           repos: "app-dashboard · humantic_apis · humantic_backend_api_v2",
+          impact: "medium",
           insight: "First 'ship the data contract, then the UI that depends on it' pattern — repeated later for intent signals, Arista overrides.",
           tasks: [
             ["05-09 → 05-27", "Research depth (API)", "Reports didn't expose research thoroughness; added field to API header + emails."],
@@ -134,6 +138,7 @@ export default {
           range: "Jul–Oct",
           title: "Auth & Identity",
           repos: "humantic_apis · payment_website · humantic-dashboard",
+          impact: "high",
           insight: "Owned a full auth surface: email OTP, OAuth 2.1, third-party (Salesforce) auth, and MCP-client auth — across 3 repos, backend to UI.",
           tasks: [
             ["07-02 → 07-14", "OTP verification route + form", "Built OTP route with destroy/expiry logic plus the OTP signup form."],
@@ -146,6 +151,7 @@ export default {
           range: "Jun–Aug",
           title: "Dashboard UI Depth",
           repos: "app-dashboard",
+          impact: "medium",
           insight: "Largest sustained UI ownership stretch — one feature (intent signals) iterated across 4+ PRs based on review.",
           tasks: [
             ["06-17 → 06-24", "New dashboard UI + logo", "Visual refresh plus domain-confirmation step added to signal modal."],
@@ -157,6 +163,7 @@ export default {
           range: "Jul–Oct",
           title: "MCP Product Surface",
           repos: "mcp",
+          impact: "high",
           insight: "Owned a full MCP tool end to end: schema design, breaking-change migration, and client-compatibility tradeoffs.",
           tasks: [
             ["07-23 → 08-04", "OAuth connectivity", "No OAuth flow for MCP client connections; built the layer so clients authenticate against Humantic accounts."],
@@ -170,6 +177,7 @@ export default {
           range: "Sep",
           title: "Infrastructure / Observability — Round 2",
           repos: "mcp · humantic_backend_api_v2 · agents",
+          impact: "high",
           insight: "Went from 'add a Slack alert' (round 1) to building the actual observability stack — dashboards + alerting infra — from scratch.",
           tasks: [
             ["09-09", "Grafana Alloy → Loki pipeline", "No centralized logging/alerting for MCP; built config.alloy log shipping, Grafana dashboard, local docker-compose stack, alert rules, structured JSON logs, alert throttling."],
@@ -180,6 +188,7 @@ export default {
           range: "Sep–Oct",
           title: "Trust & Safety / Security",
           repos: "humantic_apis · humantic-dashboard",
+          impact: "high",
           insight: "Most recent focus: moved signup safety from ad-hoc domain blocks to a maintainable, DB-backed, tested fraud-prevention layer.",
           tasks: [
             ["09-18", "Email fraud check (ffraud) — first pass", "No fraud/disposable-domain validation at signup; added validation + fraud-check function with tests."],
@@ -191,6 +200,7 @@ export default {
           range: "Apr–Oct",
           title: "Browser Extension / CRM Integrations",
           repos: "chrome_extension",
+          impact: "medium",
           insight: "Ran in parallel with everything else — owned the extension's CRM-integration surface (Salesforce, HubSpot, Zoho, Outlook) end to end, shipped 2 manifest version bumps.",
           tasks: [
             ["07-14 → 08-09", "LinkedIn URL fix (custom fields)", "Vanity/custom LinkedIn URL formats weren't parsed correctly, fetching the wrong profile; added custom-field support plus a live storage-change listener for username changes."],
@@ -203,6 +213,7 @@ export default {
           range: "Scattered",
           title: "Supporting Services",
           repos: "humantic_meeting_insights · humantic_user_profile_apis · humantic_internal",
+          impact: "low",
           insight: "Kept the supporting services — compliance scanning, calendar sync, internal tooling — healthy alongside the main feature work.",
           tasks: [
             ["02-05 → 03-11", "CloudWatch monitoring + hardcoded-IP cleanup", "No visibility into Google Calendar event processing, plus hardcoded IPs committed in multiple places; added monitoring and removed the hardcoded values."],
@@ -214,6 +225,7 @@ export default {
           range: "Oct",
           title: "Agent-SDK Architecture Exploration",
           repos: "miia-agent-sdk-poc",
+          impact: "high",
           insight: "The one piece of work that isn't a bugfix or incremental feature — original exploration of whether a production AI pipeline could be rebuilt on a different orchestration primitive.",
           tasks: [
             ["—", "Full MIIA pipeline on OpenAI Agents SDK", "Production's report pipeline runs on a hand-built SQS queue + custom harness. Rebuilt all 6 stages (scope → research → compression → extraction → report → insight brief) on the OpenAI Agents SDK instead, with a FastAPI trigger endpoint mirroring the production API shape."],

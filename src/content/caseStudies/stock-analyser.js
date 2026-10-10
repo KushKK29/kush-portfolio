@@ -56,7 +56,7 @@ export default {
       type: "evidence",
       items: [
         { label: "Architecture diagram", asset: "/diagrams/stock-analyser.svg" },
-        { label: "Hugging Face profile", url: null },
+        { label: "Live on Hugging Face", url: "https://huggingface.co/spaces/Kush27/news-based-stock-analyser" },
       ],
     },
     {
