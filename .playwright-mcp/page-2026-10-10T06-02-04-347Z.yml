@@ -1,0 +1,21 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - navigation "Main":
+      - list [ref=e6]:
+        - listitem [ref=e7] [cursor=pointer]:
+          - button "Intro" [ref=e8]
+        - listitem [ref=e9] [cursor=pointer]:
+          - button "Skills" [ref=e10]
+        - listitem [ref=e11] [cursor=pointer]:
+          - button "Projects" [ref=e12]
+        - listitem [ref=e13] [cursor=pointer]:
+          - button "Education" [ref=e14]
+        - listitem [ref=e15] [cursor=pointer]:
+          - button "Experience" [ref=e16]
+        - listitem [ref=e17] [cursor=pointer]:
+          - button "Contact" [ref=e18]
+    - paragraph [ref=e22]: Loading 3D scene…
+    - paragraph: Click a panel — or use the menu — to fly to a section
+    - button "Switch to classic view" [ref=e23] [cursor=pointer]
+  - button "Open portfolio chat" [ref=e24] [cursor=pointer]:
+    - img "Open chat" [ref=e27]

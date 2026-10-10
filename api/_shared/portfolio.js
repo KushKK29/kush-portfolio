@@ -72,11 +72,12 @@ const portfolioSections = [
     title: "Experience",
     anchor: "#experience",
     summary:
-      "Experience includes Software Engineering Intern at Humantic AI (architected onboarding across 5+ modules, automated KPIs for 10+ metrics using AWS) and Software Development Intern at GeeksforGeeks (migrated dashboards to Next.js cutting load time by 60%, improved data efficiency by 40%, 25% click-through increase).",
+      "Software Engineer Intern at Humantic AI (Jan 2026 - Present), a buyer-intelligence agent platform. Owned backend-to-frontend feature delivery across 15 repos: built onboarding flows for two AI agents (PI and Miia), put a Bifrost gateway in front of LLM providers for failover, and automated KPI reporting on AWS CloudWatch instead of manual pulls. Shipped a full auth surface (email OTP, OAuth 2.1, Salesforce integration, MCP-client auth), a complete MCP tool line (PDF generation, async polling, custom tools), a Grafana/Loki observability stack built from scratch, and a DB-backed email fraud-prevention layer wired live into signup. Also owned the browser extension's CRM-integration surface end to end (Salesforce, HubSpot, Zoho, Outlook) across 2 manifest version bumps, kept supporting services (compliance scanning, calendar sync, internal tooling) healthy, and built an original proof-of-concept rebuilding the production MIIA report pipeline on the OpenAI Agents SDK with vendored production prompts and multi-provider LLM routing (OpenAI/DeepSeek/Kimi/Qwen). Also: Software Development Intern at GeeksforGeeks (migrated dashboards to Next.js, cutting load time 60%, improving data efficiency 40%, 25% click-through increase).",
     keywords: [
       "experience",
       "intern",
       "humantic ai",
+      "humantic",
       "geeksforgeeks",
       "gfg",
       "work",
@@ -84,6 +85,25 @@ const portfolioSections = [
       "aws",
       "next.js",
       "dashboard",
+      "mcp",
+      "oauth",
+      "salesforce",
+      "grafana",
+      "observability",
+      "onboarding",
+      "fraud",
+      "chrome extension",
+      "browser extension",
+      "hubspot",
+      "zoho",
+      "outlook",
+      "agent sdk",
+      "agents sdk",
+      "openai",
+      "miia",
+      "deepseek",
+      "kimi",
+      "qwen",
     ],
   },
   {
@@ -226,7 +246,7 @@ export function searchPortfolio(query, limit = 3) {
       score += 8;
     }
 
-    if (section.id === "experience" && /intern|work|company|job|humantic|geeksforgeeks|gfg/.test(qLower)) {
+    if (section.id === "experience" && /intern|work|company|job|humantic|geeksforgeeks|gfg|mcp|oauth|salesforce|grafana|observability|onboarding|fraud/.test(qLower)) {
       score += 8;
     }
 
@@ -339,8 +359,8 @@ export function buildFallbackAnswer(query) {
     return { text: "My core stack includes HTML, CSS, JavaScript, React, Node.js, Express.js, MongoDB, Python, C, C++, DSA, and GitHub. I also use Tailwind, React Slick, EmailJS, and other frontend tools in this portfolio.", sources: [portfolioSections[2]] };
   }
 
-  if (/experience|intern|job|work/.test(lower)) {
-    return { text: "My experience includes Software Engineer Intern at Humantic AI, SDE Intern at GeeksforGeeks, Full Stack Web Developer at Slotin Solutions, and Question Analyst at Demlo AI.", sources: [portfolioSections[3]] };
+  if (/experience|intern|job|work|humantic|mcp|oauth|salesforce|grafana/.test(lower)) {
+    return { text: "I'm a Software Engineer Intern at Humantic AI, owning backend-to-frontend delivery across 8 repos: onboarding flows for two AI agents, a full auth surface (OTP, OAuth 2.1, Salesforce), a complete MCP tool line, a Grafana/Loki observability stack, and a DB-backed fraud-prevention layer. Also SDE Intern at GeeksforGeeks, migrating dashboards to Next.js — cut load time 60%.", sources: [portfolioSections[3]] };
   }
 
   if (/education|study|college|degree|school|iiit/.test(lower)) {

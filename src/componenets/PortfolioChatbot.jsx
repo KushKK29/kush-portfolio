@@ -198,10 +198,10 @@ function buildLocalFallbackResponse(query) {
     };
   }
 
-  if (/experience|intern|job|work/.test(text)) {
+  if (/experience|intern|job|work|humantic|mcp|oauth|salesforce|grafana/.test(text)) {
     return {
       text:
-        "My experience includes Software Engineer Intern at Humantic AI, SDE Intern at GeeksforGeeks, Full Stack Web Developer at Slotin Solutions, and Question Analyst at Demlo AI. That mix gave me both product-building and implementation experience.",
+        "I'm a Software Engineer Intern at Humantic AI, owning backend-to-frontend delivery across 8 repos: onboarding flows for two AI agents, a full auth surface (OTP, OAuth 2.1, Salesforce), a complete MCP tool line, a Grafana/Loki observability stack, and a DB-backed fraud-prevention layer. Also SDE Intern at GeeksforGeeks, migrating dashboards to Next.js — cut load time 60%.",
       sources: ["experience"],
     };
   }

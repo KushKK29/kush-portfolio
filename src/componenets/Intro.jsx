@@ -6,7 +6,10 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // AOS CSS
 import Leetcode from "./l1.gif";
 import Codechef from "./codechef.png";
+import Codolio from "./codolio.png";
+import { useNavigate } from "react-router-dom";
 const Intro = () => {
+  const navigate = useNavigate();
   const defaultOptionsGitHub = {
     loop: true,
     autoplay: true, // Animation will play automatically
@@ -106,14 +109,24 @@ const Intro = () => {
                   {currentText}
                 </span>
               </p>
-              <button
-                onClick={handleResumeClick}
-                className="w-full md:w-1/2 mt-4 md:mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-md text-white font-semibold tracking-wide transition duration-300"
+              <div
+                className="flex flex-col sm:flex-row gap-3 mt-4 md:mt-6 justify-center md:justify-start"
                 data-aos="zoom-in"
                 data-aos-duration="1000"
               >
-                Download Resume
-              </button>
+                <button
+                  onClick={handleResumeClick}
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-md text-white font-semibold tracking-wide transition duration-300"
+                >
+                  Download Resume
+                </button>
+                <button
+                  onClick={() => navigate("/work/humantic-ai")}
+                  className="px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-md text-white font-semibold tracking-wide transition duration-300"
+                >
+                  View Experience
+                </button>
+              </div>
 
               {/* Social Links */}
               <div
@@ -157,9 +170,17 @@ const Intro = () => {
                   href="https://www.codechef.com/users/kush279"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 w-14 h-14 hover:scale-110"
+                  className="mt-3 h-14 hover:scale-110"
                 >
                   <img src={Codechef} className="h-10 w-10" alt="Codechef" />
+                </a>
+                <a
+                  href="https://codolio.com/profile/kush_goel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 h-14 hover:scale-110"
+                >
+                  <img src={Codolio} className="h-10 w-10" alt="Codolio" />
                 </a>
               </div>
             </div>
